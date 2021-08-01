@@ -1,66 +1,79 @@
-
 import {
   createTaskPreProcessor,
   createLoanAplicationPreProcessor,
   loanApplicationPostProcessor,
   customerPostProcessor,
-  companyPostProcessor
+  companyPostProcessor,
+  coBorrowerPostProcessor,
+  createTaskPostProcessor
 } from './messageActions/actions'
 
 export const SUPPORTED_ACTIONS = {
   createCustomer: {
     schema: {},
-    preProcessor: (data, action) => data,
+    preProcessor: (data, action) => ({ customer: data }),
     postProcessor: customerPostProcessor
   }, // JSON Schema validation of data
   createCompany: {
     schema: {},
-    preprocessor: (data, action) => data,
+    preProcessor: (data, action) => ({ company: data }),
     postProcessor: companyPostProcessor
+  },
+  createCoBorrower: {
+    schema: {},
+    preProcessor: (data, action) => {
+      const responseData = {
+        customer: data,
+        loanApplicationId: data.loanApplicationId
+      }
+      responseData.customer.isCoBorower = true
+      return responseData
+    },
+    postProcessor: coBorrowerPostProcessor
   },
   createLoanApplication: {
     schema: {},
-    preprocessor: createLoanAplicationPreProcessor,
+    preProcessor: createLoanAplicationPreProcessor,
     postProcessor: loanApplicationPostProcessor
   },
   updateCustomer: {
     schema: {},
-    preprocessor: (data, action) => data,
+    preProcessor: (data, action) => ({ customer: data }),
     postProcessor: customerPostProcessor
   },
   updateCompany: {
     schema: {},
-    preprocessor: (data, action) => data,
+    preProcessor: (data, action) => ({ company: data }),
     postProcessor: companyPostProcessor
   },
   updateLoanApplication: {
     schema: {},
-    preprocessor: (data, action) => data,
+    preProcessor: (data, action) => ({ loanApplication: data }),
     postProcessor: companyPostProcessor
   },
   getLoanApplication: {
     schema: {},
-    preprocessor: (data, action) => data,
-    postProcessor: (response) => response
+    preProcessor: (data, action) => ({ loanApplication: data }),
+    postProcessor: response => response
   },
   updateApplicationStatus: {
     schema: {},
-    preprocessor: (data, action) => data,
+    preProcessor: (data, action) => ({ loanApplication: data }),
     postProcessor: loanApplicationPostProcessor
   },
   createTask: {
     schema: {},
-    preprocessor: createTaskPreProcessor,
-    postProcessor: (response) => response
+    preProcessor: createTaskPreProcessor,
+    postProcessor: createTaskPostProcessor
   },
   upadateTask: {
     schema: {},
-    preprocessor: (data, action) => data,
-    postProcessor: (response) => response
+    preProcessor: (data, action) => ({ task: data }),
+    postProcessor: response => response
   },
   sendNotification: {
     schema: {},
-    preprocessor: (data, action) => data,
-    postProcessor: (response) => response
+    preProcessor: (data, action) => ({ notification: data }),
+    postProcessor: response => response
   }
 }

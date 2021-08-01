@@ -51,7 +51,14 @@ const customerFactory = () => {
   }
   return customer
 }
-
+const taskFactory = () => ({
+  name: 'CPV Task',
+  taskType: 'cpv',
+  loanApplicationId: 'pyaaiRrWKkA3RdcFT',
+  description: 'Perform CPV',
+  borrowerType: 'retailer',
+  productType: 'shortterm'
+})
 const companyFactory = () => {
   const domain = faker.internet.domainName()
   const companyDoc = {
@@ -88,9 +95,9 @@ const loanApplicationFactory = () => {
   }
   const amounts = [500000, 100000, 125000, 150000, 200000]
   const loanApplication = {
-    primaryBorrowerId: 'z4e3KhEgGHrNrSxaN',
-    coBorrowerId: 'zLfCoELuorCtpwCtS',
-    companyId: 'y6kpeKFc3LkeMrFX7',
+    primaryBorrowerId: 'th9KXAMg5fXuucbvS',
+    coBorrowerId: 'uQ83zeBm52upH9tN6',
+    companyId: 'aRHGsDmMqbtYFcWYj',
     softCreditId: Random.id(9),
     productType: 'shortterm',
     bureauCreditScoreRefId: Random.id(9),
@@ -161,5 +168,6 @@ const loanApplicationFactory = () => {
 module.exports = {
   customerFactory,
   loanApplicationFactory,
-  companyFactory
+  companyFactory,
+  taskFactory
 }

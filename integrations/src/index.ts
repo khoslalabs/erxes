@@ -1,6 +1,7 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
-
+import * as dayjs from 'dayjs';
+import 'dayjs/locale/en-in';
 import initCallPro from './callpro/controller';
 import initChatfuel from './chatfuel/controller';
 import { connect, mongoStatus } from './connection';
@@ -32,7 +33,9 @@ import initDaily from './videoCall/controller';
 import initWhatsapp from './whatsapp/controller';
 import initLos from './loanApplication/controller';
 import initLosMessageBroker from './loanApplication/messageBroker';
-
+import initLms from './novopayLms/controller';
+import intLmsMessageBroker from './novopayLms/messageBroker';
+dayjs.locale('en-in');
 const app = express();
 
 const rawBodySaver = (req, _res, buf, encoding) => {
@@ -182,6 +185,9 @@ initTelnyx(app);
 // init los
 initLos(app);
 
+// init lms
+initLms(app);
+
 // Error handling middleware
 app.use((error, _req, res, _next) => {
   console.error(error.stack);
@@ -199,6 +205,7 @@ app.listen(PORT, () => {
     init();
     // Initialize any message brokers
     initLosMessageBroker();
+    intLmsMessageBroker();
   });
 
   debugInit(`Integrations server is running on port ${PORT}`);

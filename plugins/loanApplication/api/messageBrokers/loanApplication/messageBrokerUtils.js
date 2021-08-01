@@ -83,23 +83,17 @@ const getCloseDateForApplication = application => {
         .endOf('day')
 }
 
-const buildDeal = ({
-  application,
-  board,
-  pipeline,
-  user,
-  product,
-  stage
-}) => {
+const buildDeal = ({ application, board, pipeline, user, product, stage }) => {
   const { productType, currentLoanOffer } = application
   const deal = {
     loanApplicationId: application._id,
     name: `Application - ${application.applicationNumber}`,
     createdAt: new Date(),
     closeDate: getCloseDateForApplication(application),
-    customerIds: [application.primaryBorrowerId],
+    customerIds: application.coBorrowerId
+      ? [application.primaryBorrowerId, application.coBorrowerId]
+      : [application.primaryBorrowerId, application.coBorrowerId],
     companyIds: application.companyId ? [application.companyId] : [],
-    assignedUserIds: [],
     watchedUserIds: [user._id],
     notifiedUserIds: [user._id],
     description: `${productType} Loan`,
@@ -137,21 +131,23 @@ const validateLoanApplication = (existing, newApp) => {
   }
 }
 const buildProductData = (currentLoanOffer, product) => {
-  return [{
-    productId: product.id,
-    quantity: 1,
-    unitPrice: 1,
-    taxPercent: 0,
-    tax: 0,
-    discountPercent: 0,
-    discount: 0,
-    amount: currentLoanOffer.loanAmount,
-    loanAmount: currentLoanOffer.loanAmount,
-    processingFees: currentLoanOffer.processingFees,
-    interestRate: currentLoanOffer.interestRate,
-    loanTenureInMonths: currentLoanOffer.loanTenureInMonths,
-    interestFrequency: currentLoanOffer.interestFrequency
-  }]
+  return [
+    {
+      productId: product.id,
+      quantity: 1,
+      unitPrice: 1,
+      taxPercent: 0,
+      tax: 0,
+      discountPercent: 0,
+      discount: 0,
+      amount: currentLoanOffer.loanAmount,
+      loanAmount: currentLoanOffer.loanAmount,
+      processingFees: currentLoanOffer.processingFees,
+      interestRate: currentLoanOffer.interestRate,
+      loanTenureInMonths: currentLoanOffer.loanTenureInMonths,
+      interestFrequency: currentLoanOffer.interestFrequency
+    }
+  ]
 }
 
 // FIXME: Need to build this data for pd agent.
@@ -159,8 +155,8 @@ const buildPaymentsData = (productData, product) => {
   const { productCode } = productData
   return []
 }
-const buildAssignedUsersForTasks = () => {
-  return []
+const buildAssignedUsersForTasks = (assignedUsers) => {
+  return assignedUsers
 }
 const buildAssignedUsersForDeal = () => {
   return []
@@ -168,9 +164,7 @@ const buildAssignedUsersForDeal = () => {
 const buildLabelIdsForTask = () => {
   return []
 }
-const buildLabelIdsForDeal = () => {
-
-}
+const buildLabelIdsForDeal = () => {}
 export default {
   createCustomer,
   createCompany,

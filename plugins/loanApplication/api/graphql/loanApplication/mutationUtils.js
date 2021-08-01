@@ -1,14 +1,15 @@
-import { values, isUndefined, isEmpty, isNull } from 'lodash'
-import { BORROWER_TYPES, APPLICATION_STATUSES } from '../pluginConstants'
-import utils from '../utils'
+import { values, isUndefined, isNull } from 'lodash'
+import { BORROWER_TYPES, APPLICATION_STATUSES } from '../../pluginConstants'
+import utils from '../../utils'
 
-import services from '../services'
+import services from '../../services'
 const validateApplication = (originalDoc, newDoc) => {
   // Cannot change primary applicant or company name.
   // If primary applicant changes, then new application.
   // Can Change co-borrower.
   return true
 }
+
 const checkDuplication = async (models, { primaryBorrowerId, companyId }) => {
   // Check if this borrower has an application
   try {

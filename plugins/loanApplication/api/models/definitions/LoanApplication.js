@@ -1,4 +1,6 @@
 import { Schema } from 'mongoose'
+import * as Random from 'meteor-random'
+
 import constants from '../../pluginConstants'
 import { uniq, uniqBy } from 'lodash'
 const getEnum = (key) => {
@@ -72,6 +74,16 @@ const loanOffer = new Schema({
     optional: false,
     label: 'Product Code'
   },
+  productId: {
+    type: String,
+    optional: false,
+    label: 'Product Id'
+  },
+  productSchemeId: {
+    type: String,
+    optional: false,
+    label: 'Product Scheme Id'
+  },
   loanAmount: {
     type: Number,
     optional: false,
@@ -114,7 +126,22 @@ const loanOffer = new Schema({
     type: String,
     optional: true,
     label: 'Lender Ref Id'
+  },
+  proposedDisbursementDate: {
+    type: Date,
+    label: 'Proposed Disbursement Date'
+  },
+  proposedFirstRepaymentDate: {
+    type: Date,
+    optional: true,
+    label: 'Proposed First Repayment Date'
+  },
+  proposedFirstInterestPaymentDate: {
+    type: Date,
+    optional: true,
+    label: 'Proposed First Interest Payment Date'
   }
+
 }, { _id: false })
 const applicationDocumentsSchema = new Schema({
   documentType: {
@@ -140,7 +167,40 @@ const applicationDocumentsSchema = new Schema({
     label: 'Verification Details'
   }
 }, { _id: false })
-
+const accountDetails = new Schema({
+  accountNumber: {
+    type: String,
+    optional: false,
+    label: 'Account Number'
+  },
+  bankName: {
+    type: String,
+    optional: false,
+    label: 'Bank Name'
+  },
+  IFSC: {
+    type: String,
+    optional: false,
+    label: 'IFSC Code'
+  },
+  accountType: {
+    type: String,
+    optional: false,
+    enum: constants.APPLICATION_DOCUMENTS.ACCOUNT_TYPE.map(ac => ac.value),
+    selectOptions: constants.APPLICATION_DOCUMENTS.ACCOUNT_TYPE,
+    label: 'Account Type'
+  },
+  accountHolderName: {
+    type: String,
+    optional: false,
+    label: 'Account Holder Name'
+  },
+  accountToken: {
+    type: String,
+    optional: false,
+    label: 'Account Specific Access Token'
+  }
+})
 const creditScore = new Schema({
   creditScore: {
     type: Number,
@@ -171,7 +231,10 @@ const creditScore = new Schema({
 }, { _id: false })
 
 const LoanApplication = new Schema({
-  // _id: { pkey: true },
+  _id: {
+    type: String,
+    default: () => Random.id()
+  },
   userId: {
     type: String,
     optional: false,
@@ -187,6 +250,26 @@ const LoanApplication = new Schema({
     optional: false,
     label: 'Application Number'
   },
+  lmsPrimaryBorrowerId: {
+    type: Number,
+    optional: false,
+    label: 'Customer Id on the LMS'
+  },
+  lmsPrimaryBorrowerFormattedId: {
+    type: String,
+    optional: false,
+    label: 'Lms Primary Borrower Id'
+  },
+  lmsCoBorrowerFormattedId: {
+    type: String,
+    optional: false,
+    label: 'Lms Co Borrower Id'
+  },
+  lmsLoanId: {
+    type: String,
+    optional: false,
+    label: 'Loan Id on LMS system'
+  },
   primaryBorrowerId: {
     type: String,
     optional: false,
@@ -197,10 +280,20 @@ const LoanApplication = new Schema({
     optional: false,
     label: 'Co-Borrower'
   },
+  lmsCoBorrowerId: {
+    type: String,
+    optional: false,
+    label: 'LMS Co-Borrower id'
+  },
   companyId: {
     type: String,
     optional: true,
     label: 'Company Details'
+  },
+  lmsConpanyId: {
+    type: String,
+    optional: true,
+    label: 'LMS company Id'
   },
   // Deal will contain all deal details including loan amount and interest rates etc
   softCreditId: {
@@ -212,6 +305,16 @@ const LoanApplication = new Schema({
     type: String,
     optional: true,
     label: 'Soft Credit Ref Id'
+  },
+  disbursementAccount: {
+    type: accountDetails,
+    optional: true,
+    label: 'Disbursement Account Details'
+  },
+  repaymentAccount: {
+    type: accountDetails,
+    optional: true,
+    label: 'Repayment Account Details'
   },
   applicationDocuments: {
     type: [applicationDocumentsSchema],
@@ -257,6 +360,12 @@ const LoanApplication = new Schema({
     optional: true,
     label: 'Status Change Date'
   },
+  loanPurpose: {
+    type: String,
+    optional: true,
+    enum: constants.APPLICATION_DOCUMENTS.LOAN_PURPOSE.map(as => as.value),
+    selectOptions: constants.APPLICATION_DOCUMENTS.LOAN_PURPOSE
+  },
   applicationStatus: {
     type: String,
     optional: false,
@@ -269,10 +378,59 @@ const LoanApplication = new Schema({
     optional: true,
     label: 'Credit Score Details'
   },
+  disbursementDate: {
+    type: Date,
+    optional: true,
+    label: 'Actual Disbursement Date'
+  },
+  disbursementMode: {
+    type: String,
+    optional: true,
+    label: 'Disbursement Mode',
+    enum: constants.APPLICATION_DOCUMENTS.DISBURSEMENT_MODE.map(dm => dm.value),
+    selectOptions: constants.APPLICATION_DOCUMENTS.DISBURSEMENT_MODE
+  },
+  repaymentMode: {
+    type: String,
+    optional: true,
+    label: 'Disbursement Mode',
+    enum: constants.APPLICATION_DOCUMENTS.REPAYMENT_MODE.map(dm => dm.value),
+    selectOptions: constants.APPLICATION_DOCUMENTS.REPAYMENT_MODE
+  },
+  firstRepaymentDate: {
+    type: Date,
+    optional: true,
+    label: 'Actual First Repayment Date'
+  },
   integrationId: {
     type: String,
     optional: true,
     label: 'Integration Id'
+  },
+  firstInterestPaymentDate: {
+    type: Date,
+    optional: true,
+    label: 'Proposed First Interest Payment Date'
+  },
+  numberOfInstallments: {
+    type: Number,
+    optional: true,
+    label: 'Number of Loan Installments'
+  },
+  lmsLoanAccountNumber: {
+    type: String,
+    optional: true,
+    label: 'LMS loan account Number'
+  },
+  lmsLoanApplicationId: {
+    type: Number,
+    optional: true,
+    label: 'Lms Loan Application Id'
+  },
+  isLoanDisbursed: {
+    type: Boolean,
+    optional: true,
+    label: 'Is loan disbursed started'
   }
 
 }, { timestamps: true }
