@@ -42,6 +42,7 @@
     "husky": "^0.13.4",
     "lint-staged": "^3.6.0",
     "prettier": "^1.14.2",
+    "tap": "^15.0.9",
     "tslint": "^5.8.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.0.0",
