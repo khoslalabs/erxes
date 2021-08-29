@@ -35,6 +35,8 @@ import initLos from './loanApplication/controller';
 import initLosMessageBroker from './loanApplication/messageBroker';
 import initLms from './novopayLms/controller';
 import intLmsMessageBroker from './novopayLms/messageBroker';
+// import initLosApp from './novopayLosApp/controller';
+// import initLosAppMessageBroker from './novopayLosApp/messageBroker'
 dayjs.locale('en-in');
 const app = express();
 
@@ -188,6 +190,8 @@ initLos(app);
 // init lms
 initLms(app);
 
+// initLosApp(app);
+
 // Error handling middleware
 app.use((error, _req, res, _next) => {
   console.error(error.stack);
@@ -206,6 +210,7 @@ app.listen(PORT, () => {
     // Initialize any message brokers
     initLosMessageBroker();
     intLmsMessageBroker();
+    // initLosAppMessageBroker();
   });
 
   debugInit(`Integrations server is running on port ${PORT}`);

@@ -19,7 +19,7 @@ const testRabbitMq = async () => {
       action: 'createTask',
       data: loanApplication,
       kind: 'los',
-      userId: 'EoKWiMsYJ2nAkA8oz'
+      userId: 'PL3LQfcSkFFS9ekLg'
     }
     client.sendMessage('loan-application:request', message)
     const response = await client.consumeQueue('loan-application:response')

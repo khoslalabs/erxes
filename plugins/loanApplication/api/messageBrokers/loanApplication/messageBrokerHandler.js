@@ -145,7 +145,7 @@ async function createNewDeal (data, resolvers, { models }) {
       pipelineId: pipeline._id
     })
     const stage = stages.find(s => s.order === 1)
-    console.log(application.currentLoanOffer.productCode)
+    console.log(application.currentLoanOffer)
     const product = await models.Products.findOne({
       code: application.currentLoanOffer.productCode
     })
@@ -373,9 +373,10 @@ const getLoanApplication = async (data, resolvers, { models }) => {
   if (isNull(user)) {
     throw new Error('USER_DOES_NOT_EXIST')
   }
-  const application = await models.LoanApplications.findOne({
-    _id: loanApplicationId
-  })
+  const application = await resolvers.Query.getLoanApplications({ _id: loanApplicationId })
+  // const application = await models.LoanApplications.findOne({
+  //   _id: loanApplicationId
+  // })
   if (isNull(application)) {
     throw new Error('INVALID_APPLICATION_ID')
   }

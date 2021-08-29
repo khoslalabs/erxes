@@ -52,9 +52,9 @@ const customerFactory = () => {
   return customer
 }
 const taskFactory = () => ({
-  name: 'CPV Task',
-  taskType: 'cpv',
-  loanApplicationId: 'pyaaiRrWKkA3RdcFT',
+  name: 'PD Task',
+  taskType: 'pd',
+  loanApplicationId: '4nTad9baPeXyxRENH',
   description: 'Perform CPV',
   borrowerType: 'retailer',
   productType: 'shortterm'
@@ -95,9 +95,9 @@ const loanApplicationFactory = () => {
   }
   const amounts = [500000, 100000, 125000, 150000, 200000]
   const loanApplication = {
-    primaryBorrowerId: 'th9KXAMg5fXuucbvS',
-    coBorrowerId: 'uQ83zeBm52upH9tN6',
-    companyId: 'aRHGsDmMqbtYFcWYj',
+    primaryBorrowerId: 'zsoX6sqHBpgcW8NgK',
+    coBorrowerId: 't4DSjBNkrTPRj9NFB',
+    companyId: 'xP4EkCeps92C78fMK',
     softCreditId: Random.id(9),
     productType: 'shortterm',
     bureauCreditScoreRefId: Random.id(9),
@@ -114,7 +114,7 @@ const loanApplicationFactory = () => {
     borrowerType: 'retailer',
     loanOffers: amounts.map(am => ({
       loanProduct: '100 Day Loan',
-      productCode: '9885',
+      productCode: 'STL001',
       loanAmount: am,
       interestRate: 2.5,
       interestFrequency: 'per-month',
@@ -127,7 +127,7 @@ const loanApplicationFactory = () => {
     })),
     currentLoanOffer: {
       loanProduct: '100 Day Loan',
-      productCode: '9885',
+      productCode: 'STL001',
       loanAmount: 200000,
       interestRate: 2.5,
       interestFrequency: 'per-month',
