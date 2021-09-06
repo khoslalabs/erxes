@@ -5,7 +5,11 @@ import {
   customerPostProcessor,
   companyPostProcessor,
   coBorrowerPostProcessor,
-  createTaskPostProcessor
+  createTaskPostProcessor,
+  updateTaskPreProcessor,
+  updateTaskPostProcessor,
+  changeTaskPriorityPreProcessor,
+  changeTaskPriorityPostProcessor
 } from './messageActions/actions'
 
 export const SUPPORTED_ACTIONS = {
@@ -49,7 +53,7 @@ export const SUPPORTED_ACTIONS = {
   updateLoanApplication: {
     schema: {},
     preProcessor: (data, action) => ({ loanApplication: data }),
-    postProcessor: companyPostProcessor
+    postProcessor: loanApplicationPostProcessor
   },
   getLoanApplication: {
     schema: {},
@@ -66,10 +70,15 @@ export const SUPPORTED_ACTIONS = {
     preProcessor: createTaskPreProcessor,
     postProcessor: createTaskPostProcessor
   },
-  upadateTask: {
+  updateTask: {
     schema: {},
-    preProcessor: (data, action) => ({ task: data }),
-    postProcessor: response => response
+    preProcessor: updateTaskPreProcessor,
+    postProcessor: updateTaskPostProcessor
+  },
+  changeTaskPriority: {
+    schema: {},
+    preProcessor: changeTaskPriorityPreProcessor,
+    postProcessor: changeTaskPriorityPostProcessor
   },
   sendNotification: {
     schema: {},
