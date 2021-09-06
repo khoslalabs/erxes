@@ -4334,6 +4334,11 @@ node-int64@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
 
+node-json2html@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/node-json2html/-/node-json2html-2.1.0.tgz#4f7187a0e2063683145866ab17ad32fa893c7b92"
+  integrity sha512-HHt93utrlAc/K8U7dnSPb3YvsRsknx8pLbmmT2/KS8x5MmcmakgsaTr2tFqQawvVSFKRGm49RW8NWtCt+VUVJw==
+
 node-notifier@^5.2.1, node-notifier@^5.4.0:
   version "5.4.3"
   resolved "https://registry.yarnpkg.com/node-notifier/-/node-notifier-5.4.3.tgz#cb72daf94c93904098e28b9c590fd866e464bd50"

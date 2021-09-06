@@ -15,6 +15,7 @@
     "meteor-random": "^0.0.3",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
-    "mongoose": "^5.12.15"
+    "mongoose": "^5.12.15",
+    "node-json2html": "^2.1.0"
   }
 }

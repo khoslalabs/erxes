@@ -2,6 +2,7 @@ import { response } from 'express'
 import { isEmpty, isUndefined, values } from 'underscore'
 import config from '../config'
 import { TASK_TYPES, TASK_TYPE_LABELS } from '../constants'
+const json2html = require('node-json2html');
 
 const processError = response => {}
 export const createLoanAplicationPreProcessor = (data, action) => {
@@ -10,10 +11,53 @@ export const createLoanAplicationPreProcessor = (data, action) => {
   const pipeLineName = config[borrowerType].boardPipeLine[productType]
   return { loanApplication: data, boardName, pipeLineName }
 }
+
+export const changeTaskPriorityPreProcessor = (data, action) => {
+  if (values(TASK_TYPES).indexOf(data.taskType) === -1) {
+    throw new Error('TASK_TYPE_NOT_SUPPORTED')
+  }
+  const task = {}
+  return {
+    task,
+    ...data
+  }
+}
+
+export const changeTaskPriorityPostProcessor = (data, action) => {
+  return {
+    taskId: response._id,
+    task: response
+  }
+}
+
+export const updateTaskPreProcessor = (data, action) => {
+
+  if (values(TASK_TYPES).indexOf(data.taskType) === -1) {
+    throw new Error('TASK_TYPE_NOT_SUPPORTED')
+  }
+
+  return {
+    taskId: response._id,
+    task: response
+  }
+}
+
+export const updateTaskPostProcessor = (data, action) => {
+  return {
+    taskId: response._id,
+    task: response
+  }
+}
+
 export const createTaskPreProcessor = (data, action) => {
   if (values(TASK_TYPES).indexOf(data.taskType) === -1) {
     throw new Error('TASK_TYPE_NOT_SUPPORTED')
   }
+  let template = {'<>':'li','html':[
+      {'<>':'span','html':'<b>${step}: ${name}</b>'}
+    ]};
+  let details = data.details
+  let html = json2html.transform(details.process,template);
   const task = {
     isComplete: false,
     assignedUserIds: data.assignedUserIds || [],
@@ -28,7 +72,8 @@ export const createTaskPreProcessor = (data, action) => {
     order: 100,
     priority: 'Low',
     srarchText: `${TASK_TYPE_LABELS[data.taskType]} tasks `,
-    description: data.description,
+    description: html,
+    details: html,
     name: data.name
   }
   const { borrowerType, productType, taskType } = data

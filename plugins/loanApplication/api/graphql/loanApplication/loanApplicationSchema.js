@@ -17,7 +17,13 @@ export const types = `
     currentStage: JSON,
     statusChangeDate: String,
     ApplicatinStatus: String,
-    creditScore: JSON
+    creditScore: JSON,
+    dob: String,
+    sex: String,
+    numberOfDependents: String,
+    userEducation: String,
+    userEthnicity: String,
+    maritalStatus: String
   }
 `;
 // We can build these query parameters as we go along
@@ -38,7 +44,13 @@ currentLoanOffer: JSON,
 stages: [JSON],
 currentStage: JSON,
 ApplicatinStatus: String,
-creditScore: JSON
+creditScore: JSON,
+dob: String,
+sex: String,
+numberOfDependents: String,
+userEducation: String,
+userEthnicity: String,
+maritalStatus: String
 `;
 const queryParameters = `
   _id: String,

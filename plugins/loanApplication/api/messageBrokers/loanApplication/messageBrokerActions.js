@@ -19,6 +19,7 @@ const actionMap = {
   },
   createTask: { handler: messageBrokerHandler.createTask },
   updateTask: { handler: messageBrokerHandler.updateTask },
+  changeTaskPriority: {handler: messageBrokerHandler.changeTaskPriority},
   sendNotification: { handler: messageBrokerHandler.sendNotification },
   /** GETTERS */
   getLoanApplication: { handler: messageBrokerHandler.getLoanApplication },
