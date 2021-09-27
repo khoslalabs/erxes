@@ -261,8 +261,6 @@ const getUpdatedLoanApplication = (application, newApp) => {
 
   if (newApp.loanApplication != undefined ){
 
-
-
     if (newApp.loanApplication.loanAmount != undefined && newApp.loanApplication.loanPurpose != undefined){
 
       const loanDetails = {
