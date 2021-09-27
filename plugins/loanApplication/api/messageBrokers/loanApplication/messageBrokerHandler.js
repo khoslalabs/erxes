@@ -261,12 +261,21 @@ const updateLoanApplication = async (data, resolvers, { models }) => {
 
     const application = await models.LoanApplications.findOne({_id: data.loanApplication._id})
 
+    if (data.loanApplication.stageName != undefined) {
+      const stage = await models.Stages.findOne({name: data.loanApplication.stageName})
+      if (stage != null && stage != undefined){
+        loanApplication.stageId = stage.doc._id
+      }
+    }
+
     const updatedApp = messageBrokerUtils.getUpdatedLoanApplication(application, data)
 
     const updateReponse = await models.LoanApplications.editApplication(updatedApp, user)
     console.log(updateReponse)
     // update the deal deatils
     const deal = await models.Deals.findOne({ loanApplicationId: loanApplication._id })
+
+
 
     const newDeal = messageBrokerUtils.editDeal(deal, loanApplication)
     await resolvers.Mutation.dealsEdit(root, newDeal, {
