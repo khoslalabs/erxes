@@ -109,6 +109,11 @@ const handleTelnyxWebhook = (req, res, next, hookName: string) => {
 
 export const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded());
+
+app.use('/api', require('./routes')(express));
+
 app.disable('x-powered-by');
 
 // handle engage trackers

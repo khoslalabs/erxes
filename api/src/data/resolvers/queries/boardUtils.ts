@@ -363,6 +363,8 @@ export const checkItemPermByUser = async (
   const stage = await Stages.getStage(item.stageId);
 
   const pipeline = await Pipelines.getPipeline(stage.pipelineId);
+  // console.log("stage------------", stage)
+  // console.log("pipeline------------", pipeline)
 
   if (
     pipeline.visibility === 'private' &&
@@ -384,7 +386,7 @@ export const checkItemPermByUser = async (
   ) {
     throw new Error('You do not have permission to view.');
   }
-
+// console.log("item==============",item)
   return item;
 };
 

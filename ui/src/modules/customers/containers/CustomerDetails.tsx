@@ -92,7 +92,7 @@ class CustomerDetailsContainer extends React.Component<FinalProps, State> {
       fields: fields.customer,
       deviceFields: fields.device
     };
-
+    // console.log("updatedProps", updatedProps)
     return <CustomerDetails {...updatedProps} />;
   }
 }

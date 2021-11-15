@@ -52,14 +52,14 @@ type State = {
   paymentsData: IPaymentsData;
   changePayData: IPaymentsData;
   updatedItem?: IItem;
+  items: any;
 } & StringState;
 
 export default class DealEditForm extends React.Component<Props, State> {
   constructor(props) {
     super(props);
-
     const item = props.item;
-    console.log(item);
+    // console.log("item", item);
     this.state = {
       amount: item.amount || {},
       productsData: item.products ? item.products.map(p => ({ ...p })) : [],
@@ -67,7 +67,8 @@ export default class DealEditForm extends React.Component<Props, State> {
       products: item.products ? item.products.map(p => p.product) : [],
       paymentsData: item.paymentsData,
       changePayData: {},
-      currentTab: 'deal'
+      currentTab: 'deal',
+      items: item && item.priority ? item.priority : 'low'
     };
   }
 
@@ -97,16 +98,26 @@ export default class DealEditForm extends React.Component<Props, State> {
   companyFormData = () => {
     const item = this.props.item;
     const businessDetails = item.loanApplication.businessDetails;
-
+    const arrayOfObj = businessDetails && businessDetails.businessAddress && Object.entries(businessDetails && businessDetails.businessAddress).map((e) => ({ [e[0]]: e[1] }));
+    // console.log("arrayOfObj", arrayOfObj)
+    let addressArr = arrayOfObj && arrayOfObj.length && arrayOfObj.map(data => {
+      let datas = ''
+      datas = datas + (`${Object.keys(data)}-${Object.values(data)}`)
+      return datas
+    })
+    // console.log("addressArr", addressArr)
+    let addressObj = addressArr && addressArr.length && addressArr.join(", ")
+    // console.log("addressObj", addressObj)
     return {
-      title: businessDetails.businessName,
+      title: businessDetails && businessDetails.businessName,
       location: 'Not in China',
       owned: 'rent',
       store_size: '',
       total_stores: '4',
       earning_members: '2',
-      monthly_income: 400000,
-      shop_address: JSON.stringify(businessDetails.businessAddress)
+      monthly_income: businessDetails && businessDetails.annualSales,
+      shop_address: addressObj
+      // JSON.stringify(businessDetails && businessDetails.businessAddress)
     };
   };
 
@@ -118,22 +129,23 @@ export default class DealEditForm extends React.Component<Props, State> {
       email: '',
       mobile: '',
       pan: '',
-      dob: Date.parse(personalDetails.dob),
+      dob: personalDetails && personalDetails.dob,
+      // dob:'1234',
       gst: '',
       udyam: '',
-      marital_status: personalDetails.marital_status,
-      dependents: personalDetails.numberOfDependents,
-      gender: personalDetails.sex,
-      education: personalDetails.userEducation,
-      religion: personalDetails.userEthnicity
+      marital_status: personalDetails && personalDetails.maritalStatus,
+      dependents: personalDetails && personalDetails.numberOfDependents,
+      gender: personalDetails && personalDetails.sex,
+      education: personalDetails && personalDetails.userEducation,
+      religion: personalDetails && personalDetails.userEthnicity
     };
   };
 
   loanFormData = () => {
     const item = this.props.item;
     return {
-      loan_amount: item.loanApplication.loanDetails.loanAmount,
-      loan_purpose: item.loanApplication.loanDetails.loanPurpose,
+      loan_amount: item && item.loanApplication && item.loanApplication.loanDetails && item.loanApplication.loanDetails.loanAmount,
+      loan_purpose: item && item.loanApplication && item.loanApplication.loanDetails && item.loanApplication.loanDetails.loanPurpose,
       coborrower_name: '',
       coborrower_mobile: '',
       coborrower_relationship: '',
@@ -265,6 +277,9 @@ export default class DealEditForm extends React.Component<Props, State> {
           item={item}
           saveItem={saveItem}
           onChangeStage={onChangeStage}
+          // onChangeStage={(value)=>{
+          //   debugger
+          // }}
         />
         <HeaderRowSmall>
           <Tabs full={true}>
@@ -312,6 +327,11 @@ export default class DealEditForm extends React.Component<Props, State> {
               item={item}
               addItem={addItem}
               onChangeStage={onChangeStage}
+              onChangePriority={(value) => {
+                // console.log("onChangePriority", value)
+                this.setState({ items: value })
+              }}
+              items={this.state.items}
             />
 
             <Sidebar

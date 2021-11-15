@@ -221,7 +221,14 @@ class Navigation extends React.Component<{
             '/knowledgeBase',
             'icon-book'
           )}
-
+           {
+            this.renderNavItem(
+              'showUserData',
+              __('UserData'),
+              '/userlist',
+              'icon-dashboard'
+            )
+          }
           {pluginsOfNavigations(this.renderNavItem)}
         </Nav>
       </LeftNavigation>

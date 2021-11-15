@@ -43,13 +43,13 @@ export const commonTypes = `
   status: String
   attachments: [Attachment]
   userId: String
-
   assignedUsers: [User]
   stage: Stage
   labels: [PipelineLabel]
   pipeline: Pipeline
   createdUser: User
   customFieldsData: JSON
+  response:JSON
 `;
 
 export const commonMutationParams = `

@@ -18,14 +18,17 @@ const companyQueries = {
     params: IListArgs,
     { commonQuerySelector, commonQuerySelectorElk }: IContext
   ) {
+    console.log("test---------------",params)
     const qb = new Builder(params, {
       commonQuerySelector,
       commonQuerySelectorElk
     });
+    console.log("qb---------------",qb)
 
     await qb.buildAllQueries();
 
     const { list } = await qb.runQueries();
+    console.log("list---------------",list)
 
     return list;
   },

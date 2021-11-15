@@ -118,6 +118,8 @@ export default function TicketEditForm(props: Props) {
             addItem={addItem}
             sendToBoard={sendToBoard}
             onChangeStage={onChangeStage}
+            onChangePriority={()=>{console.log("onChangePriority")}}
+            items={''}
           />
 
           <Sidebar

@@ -46,7 +46,7 @@ const CompanyDetailsContainer = (props: FinalProps) => {
 
   const taggerRefetchQueries = [
     {
-      query: gql(queries.companyDetail),
+      que0ry: gql(queries.companyDetail),
       variables: { _id: id }
     }
   ];

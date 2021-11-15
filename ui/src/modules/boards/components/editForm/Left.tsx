@@ -153,6 +153,8 @@ type Props = {
   addItem: (doc: IItemParams, callback: () => void) => void;
   sendToBoard?: (item: any) => void;
   onChangeStage?: (stageId: string) => void;
+  onChangePriority:(item: any) => void;
+  items:any;
 };
 
 const Left = (props: Props) => {
@@ -165,7 +167,9 @@ const Left = (props: Props) => {
     onUpdate,
     addItem,
     sendToBoard,
-    onChangeStage
+    onChangeStage,
+    onChangePriority,
+    items
   } = props;
 
   const onChangeAttachment = (files: IAttachment[]) =>
@@ -185,6 +189,8 @@ const Left = (props: Props) => {
         onUpdate={onUpdate}
         sendToBoard={sendToBoard}
         onChangeStage={onChangeStage}
+        onChangePriority={onChangePriority}
+        items={items}
       />
 
       {item.labels.length > 0 && (

@@ -1141,6 +1141,61 @@ a:hover {
   .modal-close-date {
     width: 330px;
   }
+
+  #userTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    display: block;
+    max-height: 270px;
+    overflow-y: scroll;
+    margin-left:3%
+  }
+  
+  #userTable td, #userTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #userTable tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #userTable tr:hover {background-color: #ddd;}
+  
+  #userTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #f9b920;
+    color: white;
+  }
+  
+  .btn-group button {
+    display: block; /* Make the buttons appear below each other */
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #f1f1f1;
+    color: black;
+    font-size: 16px;
+    padding: 11px 22px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  
+  
+  /* Add a background color on hover */
+  .btn-group button:hover {
+    background-color: #f9b920;
+  }
+  
+  .sc-kGXeez {
+    width: 390%;
+}
+.modal-box {
+    color:red
+}
 `;
 
 const globalStyle = [`${style}`] as any;

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="com/transunion/gccs/core/services/v2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="GetCustomerAssetsResponse" type="v2:GetCustomerAssetsResponseType" xmlns:v2="com/transunion/gccs/core/services/v2"/>
+  <xs:complexType name="TrueLinkCreditReportType">
+    <xs:sequence>
+      <xs:element ref="v5:Frozen" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element ref="v5:Borrower" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element ref="v5:TradeLinePartition" maxOccurs="unbounded" minOccurs="0" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element ref="v5:InquiryPartition" maxOccurs="unbounded" minOccurs="0" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element ref="v5:Message" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element ref="v5:Sources" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element ref="v5:SafetyCheckPassed" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element ref="v5:ReferenceKey" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="DeceasedIndicator"/>
+    <xs:attribute type="xs:string" name="FraudIndicator"/>
+    <xs:attribute ref="v5:currentversion" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+  </xs:complexType>
+  <xs:complexType name="AssetType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="AssetId"/>
+      <xs:element type="xs:string" name="Type"/>
+      <xs:element type="xs:string" name="Status"/>
+      <xs:element type="xs:string" name="CreationDate"/>
+      <xs:element type="xs:string" name="ExpirationDate"/>
+      <xs:element type="xs:string" name="SafetyCheckFailure"/>
+      <xs:element type="v2:TrueLinkCreditReportType" name="TrueLinkCreditReport" xmlns:v2="com/transunion/gccs/core/services/v2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetCustomerAssetsSuccessType">
+    <xs:sequence>
+      <xs:element type="v2:AssetType" name="Asset" xmlns:v2="com/transunion/gccs/core/services/v2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetCustomerAssetsResponseType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="ResponseKey"/>
+      <xs:element type="v2:GetCustomerAssetsSuccessType" name="GetCustomerAssetsSuccess" xmlns:v2="com/transunion/gccs/core/services/v2"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="ResponseStatus"/>
+  </xs:complexType>
+</xs:schema>

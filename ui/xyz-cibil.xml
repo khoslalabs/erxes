@@ -1,0 +1,860 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <GetCustomerAssetsResponse ResponseStatus="Success" xmlns="com/transunion/gccs/core/services/v2" xmlns:ns2="com/truelink/ds/sch/pii/v1" xmlns:ns3="com/truelink/schema/msp" xmlns:ns4="com/truelink/ds/sch/report/truelink/v5" xmlns:ns5="com/truelink/schema/database/tcps/enumerations">
+            <ResponseKey>fee66480ed64b7bb:75980fe7:177a7c6d738:-7e9a</ResponseKey>
+            <GetCustomerAssetsSuccess>
+                <Asset>
+                    <AssetId>1426358</AssetId>
+                    <Type>SingleCreditReport</Type>
+                    <Status>Active</Status>
+                    <CreationDate>2021-02-16T07:58:18.000Z</CreationDate>
+                    <ExpirationDate>2023-02-16T07:58:18.000Z</ExpirationDate>
+                    <SafetyCheckFailure>false</SafetyCheckFailure>
+                    <TrueLinkCreditReport DeceasedIndicator="false" FraudIndicator="false" ns4:currentversion="5.0">
+                        <ns4:Frozen/>
+                        <ns4:Borrower borrowerKey="2154735700">
+                            <ns4:BorrowerAddress addressOrder="0" dateReported="2019-06-03Z" enrichMode="E" partitionSet="0">
+                                <ns4:CreditAddress>
+                                    <ns2:StreetAddress>BAHADURGAR NEW DELHI</ns2:StreetAddress>
+                                    <ns2:City/>
+                                    <ns2:PostalCode>110006</ns2:PostalCode>
+                                    <ns2:Region>07</ns2:Region>
+                                    <ns2:AddressType></ns2:AddressType>
+                                    <ns2:SerialNumber>1115093905</ns2:SerialNumber>
+                                </ns4:CreditAddress>
+                                <ns4:Dwelling abbreviation="" description="" rank="100000" symbol="02"/>
+                                <ns4:Origin abbreviation="" description="" rank="100000" symbol="SBI CARDS"/>
+                                <ns4:Ownership abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:BorrowerAddress>
+                            <ns4:BorrowerAddress addressOrder="1" dateReported="2019-04-24Z" enrichMode="E" partitionSet="1">
+                                <ns4:CreditAddress>
+                                    <ns2:StreetAddress>SEC-3 ROHINI NEW DELHI</ns2:StreetAddress>
+                                    <ns2:City/>
+                                    <ns2:PostalCode>110085</ns2:PostalCode>
+                                    <ns2:Region>07</ns2:Region>
+                                    <ns2:AddressType></ns2:AddressType>
+                                    <ns2:SerialNumber>1100993458</ns2:SerialNumber>
+                                </ns4:CreditAddress>
+                                <ns4:Dwelling abbreviation="" description="" rank="100000" symbol="03"/>
+                                <ns4:Origin abbreviation="" description="" rank="100000" symbol="SBI CARDS"/>
+                                <ns4:Ownership abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:BorrowerAddress>
+                            <ns4:BorrowerAddress addressOrder="2" dateReported="2018-10-31Z" enrichMode="E" partitionSet="2">
+                                <ns4:CreditAddress>
+                                    <ns2:StreetAddress>DELHI NEW DELHI</ns2:StreetAddress>
+                                    <ns2:City/>
+                                    <ns2:PostalCode>110006</ns2:PostalCode>
+                                    <ns2:Region>07</ns2:Region>
+                                    <ns2:AddressType></ns2:AddressType>
+                                    <ns2:SerialNumber>1030961068</ns2:SerialNumber>
+                                </ns4:CreditAddress>
+                                <ns4:Dwelling abbreviation="" description="" rank="100000" symbol="02"/>
+                                <ns4:Origin abbreviation="" description="" rank="100000" symbol="SBI CARDS"/>
+                                <ns4:Ownership abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:BorrowerAddress>
+                            <ns4:BorrowerAddress addressOrder="3" dateReported="2018-10-31Z" enrichMode="E" partitionSet="3">
+                                <ns4:CreditAddress>
+                                    <ns2:StreetAddress>DELHI NEW DELHI</ns2:StreetAddress>
+                                    <ns2:City/>
+                                    <ns2:PostalCode>110085</ns2:PostalCode>
+                                    <ns2:Region>07</ns2:Region>
+                                    <ns2:AddressType></ns2:AddressType>
+                                    <ns2:SerialNumber>1030961067</ns2:SerialNumber>
+                                </ns4:CreditAddress>
+                                <ns4:Dwelling abbreviation="" description="" rank="100000" symbol="03"/>
+                                <ns4:Origin abbreviation="" description="" rank="100000" symbol="SBI CARDS"/>
+                                <ns4:Ownership abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:BorrowerAddress>
+                            <ns4:Birth age="0" date="1980-06-26Z" partitionSet="0">
+                                <ns4:BirthDate day="26" month="6" year="1980"/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Birth>
+                            <ns4:CreditStatement dateUpdated="" statement="">
+                                <ns4:StatementType abbreviation="" description="" rank="100000" symbol="DISPUTE"/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:CreditStatement>
+                            <ns4:CreditScore populationRank="20" riskScore="770" scoreName="CIBILTransUnionScore3">
+                                <ns4:CreditScoreFactor bureauCode="27">
+                                    <ns4:Factor abbreviation="" description="" rank="100000" symbol="27"/>
+                                    <ns4:FactorText>explain: One of the factors your CIBIL Score depends on is your credit activity. Every time you apply for a credit card/loan, the lender/credit institution makes an enquiry, which is captured in your CIBIL Report. A high number of such enquiries in the last 36 months will impact your CIBIL Score. Ensure your CIBIL Score is not impacted negatively by your credit activity. Do not apply for multiple loans or credit cards within a short period of time as this will make you look credit-hungry and will impact your CIBIL Score.</ns4:FactorText>
+                                    <ns4:FactorText>factor: One of the factors your CIBIL Score depends on is your credit activity. Every time you apply for a credit card/loan, the lender/credit institution makes an enquiry, which is captured in your CIBIL Report. A high number of such enquiries in the last 36 months will impact your CIBIL Score. Ensure your CIBIL Score is not impacted negatively by your credit activity. Do not apply for multiple loans or credit cards within a short period of time as this will make you look credit-hungry and will impact your CIBIL Score.</ns4:FactorText>
+                                </ns4:CreditScoreFactor>
+                                <ns4:CreditScoreFactor bureauCode="28">
+                                    <ns4:Factor abbreviation="" description="" rank="100000" symbol="28"/>
+                                    <ns4:FactorText>explain: Your exposure to credit has been less than six months from the date of the report. The more recent the account open dates across your credit profile the lower would be your CIBIL Score. Ensure you do not open too many credit card and loan accounts within a short period of time. Make sure you make timely payments towards all your accounts.</ns4:FactorText>
+                                    <ns4:FactorText>factor: Your exposure to credit has been less than six months from the date of the report. The more recent the account open dates across your credit profile the lower would be your CIBIL Score. Ensure you do not open too many credit card and loan accounts within a short period of time. Make sure you make timely payments towards all your accounts.</ns4:FactorText>
+                                </ns4:CreditScoreFactor>
+                                <ns4:CreditScoreFactor bureauCode="00">
+                                    <ns4:Factor abbreviation="" description="" rank="100000" symbol="00"/>
+                                    <ns4:FactorText>No Valid Factors</ns4:FactorText>
+                                    <ns4:FactorText>We're sorry, but the adverse factors affecting your Credit Score are currently unavailable. Factors that may affect your score include: payment history, outstanding debt, credit account history, recent inquiries, types of credit and other features such as bankruptcies and collection accounts.</ns4:FactorText>
+                                </ns4:CreditScoreFactor>
+                                <ns4:CreditScoreFactor bureauCode="00">
+                                    <ns4:Factor abbreviation="" description="" rank="100000" symbol="00"/>
+                                    <ns4:FactorText>No Valid Factors</ns4:FactorText>
+                                    <ns4:FactorText>We're sorry, but the adverse factors affecting your Credit Score are currently unavailable. Factors that may affect your score include: payment history, outstanding debt, credit account history, recent inquiries, types of credit and other features such as bankruptcies and collection accounts.</ns4:FactorText>
+                                </ns4:CreditScoreFactor>
+                                <ns4:CreditScoreFactor bureauCode="00">
+                                    <ns4:Factor abbreviation="" description="" rank="100000" symbol="00"/>
+                                    <ns4:FactorText>No Valid Factors</ns4:FactorText>
+                                    <ns4:FactorText>We're sorry, but the adverse factors affecting your Credit Score are currently unavailable. Factors that may affect your score include: payment history, outstanding debt, credit account history, recent inquiries, types of credit and other features such as bankruptcies and collection accounts.</ns4:FactorText>
+                                </ns4:CreditScoreFactor>
+                                <ns4:CreditScoreModel abbreviation="" description="" rank="100000" symbol="CIBILTUSC3"/>
+                                <ns4:NoScoreReason abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:CreditScore>
+                            <ns4:Employer account="10" dateReported="2020-08-08Z" income="503980.0" name="" partitionSet="0" serialNumber="1490741043">
+                                <ns4:CreditAddress>
+                                    <ns2:StreetAddress/>
+                                    <ns2:City/>
+                                    <ns2:PostalCode/>
+                                    <ns2:Region/>
+                                    <ns2:AddressType></ns2:AddressType>
+                                </ns4:CreditAddress>
+                                <ns4:OccupationCode description="Others" rank="100000" symbol="04"/>
+                                <ns4:NetGrossIndicator description="Net Income" rank="100000" symbol="N"/>
+                                <ns4:IncomeFreqIndicator description="Annual" rank="100000" symbol="A"/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Employer>
+                            <ns4:BorrowerName partitionSet="0">
+                                <ns4:Name>
+                                    <ns2:Forename>TOSHAN</ns2:Forename>
+                                    <ns2:Surname>SAINI</ns2:Surname>
+                                </ns4:Name>
+                                <ns4:NameType abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:BorrowerName>
+                            <ns4:BorrowerTelephone enrichMode="R" partitionSet="0">
+                                <ns4:PhoneNumber>
+                                    <ns2:Number>8095861800</ns2:Number>
+                                    <ns2:SerialNumber>1057082328</ns2:SerialNumber>
+                                </ns4:PhoneNumber>
+                                <ns4:PhoneType rank="100000" symbol="03"/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:BorrowerTelephone>
+                            <ns4:BorrowerTelephone enrichMode="R" partitionSet="1">
+                                <ns4:PhoneNumber>
+                                    <ns2:Number>8095861800</ns2:Number>
+                                    <ns2:SerialNumber>800291602</ns2:SerialNumber>
+                                </ns4:PhoneNumber>
+                                <ns4:PhoneType rank="100000" symbol="01"/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:BorrowerTelephone>
+                            <ns4:BorrowerTelephone enrichMode="R" partitionSet="2">
+                                <ns4:PhoneNumber>
+                                    <ns2:Number>8095861800</ns2:Number>
+                                    <ns2:SerialNumber>800291601</ns2:SerialNumber>
+                                </ns4:PhoneNumber>
+                                <ns4:PhoneType rank="100000" symbol="01"/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:BorrowerTelephone>
+                            <ns4:BorrowerTelephone enrichMode="R" partitionSet="3">
+                                <ns4:PhoneNumber>
+                                    <ns2:Number>8095861800</ns2:Number>
+                                    <ns2:SerialNumber>193435435</ns2:SerialNumber>
+                                </ns4:PhoneNumber>
+                                <ns4:PhoneType rank="100000" symbol="00"/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:BorrowerTelephone>
+                            <ns4:Gender>Male</ns4:Gender>
+                            <ns4:IdentifierPartition>
+                                <ns4:Identifier>
+                                    <ns4:ID>
+                                        <ns2:IdentifierName>SocialId</ns2:IdentifierName>
+                                        <ns2:Id>##########</ns2:Id>
+                                    </ns4:ID>
+                                    <ns4:Source>
+                                        <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                        <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                        <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                        <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                        <ns4:Locale>en_IN</ns4:Locale>
+                                    </ns4:Source>
+                                </ns4:Identifier>
+                                <ns4:Identifier enrichMode="R">
+                                    <ns4:ID>
+                                        <ns2:IdentifierName>TaxId</ns2:IdentifierName>
+                                        <ns2:Id>##########</ns2:Id>
+                                        <ns2:SerialNumber>65169762</ns2:SerialNumber>
+                                    </ns4:ID>
+                                    <ns4:Source>
+                                        <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                        <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                        <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                        <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                        <ns4:Locale>en_IN</ns4:Locale>
+                                    </ns4:Source>
+                                </ns4:Identifier>
+                            </ns4:IdentifierPartition>
+                        </ns4:Borrower>
+                        <ns4:TradeLinePartition accountTypeAbbreviation="" accountTypeDescription="" accountTypeSymbol="10">
+                            <ns4:Tradeline accountNumber="############1622" accountsSoldTo="" branch="" bureau="" creditorName="PNB" currentBalance="15011" dateOpened="2020-07-16Z" dateReported="2020-08-08Z" highBalance="15011" noOfParticipants="" position="0" settlementAmount="-1" subscriberCode="1140001" thirdPartyName="" writtenOffAmtTotal="-1" writtenOffPrincipal="-1">
+                                <ns4:AccountCondition abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:AccountDesignator abbreviation="" description="" rank="100000" symbol="1"/>
+                                <ns4:DisputeFlag abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:OpenClosed abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:PayStatus abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:VerificationIndicator abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:GrantedTrade actualPaymentAmount="-1" amountPastDue="0" collateral="-1" interestRate="35.89" serialNumber="1490741043" termMonths="1">
+                                    <ns4:AccountType abbreviation="" description="" rank="100000" symbol="10"/>
+                                    <ns4:CreditType abbreviation="" description="" rank="100000" symbol="10"/>
+                                    <ns4:PaymentFrequency abbreviation="" description="" rank="100000" symbol="03"/>
+                                    <ns4:TermType abbreviation="" description="" rank="100000" symbol=""/>
+                                    <ns4:WorstPayStatus abbreviation="" description="" rank="100000" symbol=""/>
+                                    <ns4:PayStatusHistory endDate="2020-08-01Z" startDate="2020-08-01Z" status="0,">
+                                        <ns4:MonthlyPayStatus date="2020-08-01Z" status="0"/>
+                                    </ns4:PayStatusHistory>
+                                    <ns4:CreditLimit>80000</ns4:CreditLimit>
+                                    <ns4:CashLimit>16000</ns4:CashLimit>
+                                    <ns4:EMIAmount>-1</ns4:EMIAmount>
+                                    <ns4:CollateralType abbreviation="" description="" rank="100000" symbol=""/>
+                                </ns4:GrantedTrade>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Tradeline>
+                        </ns4:TradeLinePartition>
+                        <ns4:TradeLinePartition accountTypeAbbreviation="" accountTypeDescription="" accountTypeSymbol="10">
+                            <ns4:Tradeline accountNumber="############5980" accountsSoldTo="" branch="" bureau="" creditorName="CITIBANK" currentBalance="11813" dateAccountStatus="2020-08-26Z" dateOpened="2006-09-29Z" dateReported="2020-09-11Z" highBalance="77347" noOfParticipants="" position="1" settlementAmount="-1" subscriberCode="2150001" thirdPartyName="" writtenOffAmtTotal="-1" writtenOffPrincipal="-1">
+                                <ns4:AccountCondition abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:AccountDesignator abbreviation="" description="" rank="100000" symbol="2"/>
+                                <ns4:DisputeFlag abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:OpenClosed abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:PayStatus abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:VerificationIndicator abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:GrantedTrade actualPaymentAmount="21321" amountPastDue="0" collateral="-1" dateLastPayment="2020-08-26Z" interestRate="42.00" serialNumber="82873060" termMonths="-1">
+                                    <ns4:AccountType abbreviation="" description="" rank="100000" symbol="10"/>
+                                    <ns4:CreditType abbreviation="" description="" rank="100000" symbol="10"/>
+                                    <ns4:PaymentFrequency abbreviation="" description="" rank="100000" symbol="03"/>
+                                    <ns4:TermType abbreviation="" description="" rank="100000" symbol=""/>
+                                    <ns4:WorstPayStatus abbreviation="" description="" rank="100000" symbol=""/>
+                                    <ns4:PayStatusHistory endDate="2017-10-01Z" startDate="2020-09-01Z" status="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,">
+                                        <ns4:MonthlyPayStatus date="2020-09-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2020-08-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2020-07-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2020-06-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2020-05-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2020-04-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2020-03-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2020-02-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2020-01-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2019-12-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2019-11-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2019-10-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2019-09-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2019-08-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2019-07-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2019-06-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2019-05-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2019-04-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2019-03-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2019-02-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2019-01-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2018-12-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2018-11-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2018-10-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2018-09-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2018-08-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2018-07-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2018-06-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2018-05-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2018-04-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2018-03-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2018-02-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2018-01-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2017-12-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2017-11-01Z" status="0"/>
+                                        <ns4:MonthlyPayStatus date="2017-10-01Z" status="0"/>
+                                    </ns4:PayStatusHistory>
+                                    <ns4:CreditLimit>80000</ns4:CreditLimit>
+                                    <ns4:CashLimit>48000</ns4:CashLimit>
+                                    <ns4:EMIAmount>-1</ns4:EMIAmount>
+                                    <ns4:CollateralType abbreviation="" description="" rank="100000" symbol=""/>
+                                </ns4:GrantedTrade>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Tradeline>
+                        </ns4:TradeLinePartition>
+                        <ns4:TradeLinePartition accountTypeAbbreviation="" accountTypeDescription="" accountTypeSymbol="10">
+                            <ns4:Tradeline accountNumber="############2110" accountsSoldTo="" branch="" bureau="" creditorName="CITIBANK" currentBalance="11833" dateAccountStatus="2014-12-27Z" dateOpened="2006-09-29Z" dateReported="2015-01-13Z" highBalance="57214" noOfParticipants="" position="2" settlementAmount="-1" subscriberCode="2150001" thirdPartyName="" writtenOffAmtTotal="-1" writtenOffPrincipal="-1">
+                                <ns4:AccountCondition abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:AccountDesignator abbreviation="" description="" rank="100000" symbol="2"/>
+                                <ns4:DisputeFlag abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:OpenClosed abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:PayStatus abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:VerificationIndicator abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:GrantedTrade actualPaymentAmount="10423" amountPastDue="0" collateral="-1" dateLastPayment="2014-12-27Z" interestRate="17.88" serialNumber="564192163" termMonths="-1">
+                                    <ns4:AccountType abbreviation="" description="" rank="100000" symbol="10"/>
+                                    <ns4:CreditType abbreviation="" description="" rank="100000" symbol="10"/>
+                                    <ns4:PaymentFrequency abbreviation="" description="" rank="100000" symbol="03"/>
+                                    <ns4:TermType abbreviation="" description="" rank="100000" symbol=""/>
+                                    <ns4:WorstPayStatus abbreviation="" description="" rank="100000" symbol=""/>
+                                    <ns4:PayStatusHistory endDate="2015-01-01Z" startDate="2015-01-01Z" status="0,">
+                                        <ns4:MonthlyPayStatus date="2015-01-01Z" status="0"/>
+                                    </ns4:PayStatusHistory>
+                                    <ns4:CreditLimit>80000</ns4:CreditLimit>
+                                    <ns4:CashLimit>48000</ns4:CashLimit>
+                                    <ns4:EMIAmount>-1</ns4:EMIAmount>
+                                    <ns4:CollateralType abbreviation="" description="" rank="100000" symbol=""/>
+                                </ns4:GrantedTrade>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Tradeline>
+                        </ns4:TradeLinePartition>
+                        <ns4:TradeLinePartition accountTypeAbbreviation="" accountTypeDescription="" accountTypeSymbol="15">
+                            <ns4:Tradeline accountNumber="############10-0" accountsSoldTo="" branch="" bureau="" creditorName="SYNDICATE BANK" currentBalance="0" dateClosed="2012-03-23Z" dateReported="2012-03-31Z" highBalance="-1" noOfParticipants="" position="3" settlementAmount="-1" subscriberCode="1150001" thirdPartyName="" writtenOffAmtTotal="-1" writtenOffPrincipal="-1">
+                                <ns4:AccountCondition abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:AccountDesignator abbreviation="" description="" rank="100000" symbol="1"/>
+                                <ns4:DisputeFlag abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:OpenClosed abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:PayStatus abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:VerificationIndicator abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:GrantedTrade actualPaymentAmount="-1" amountPastDue="-1" collateral="-1" interestRate="-1.00" serialNumber="356075437" termMonths="-1">
+                                    <ns4:AccountType abbreviation="" description="" rank="100000" symbol="15"/>
+                                    <ns4:CreditType abbreviation="" description="" rank="100000" symbol="15"/>
+                                    <ns4:PaymentFrequency abbreviation="" description="" rank="100000" symbol=""/>
+                                    <ns4:TermType abbreviation="" description="" rank="100000" symbol=""/>
+                                    <ns4:WorstPayStatus abbreviation="" description="" rank="100000" symbol=""/>
+                                    <ns4:PayStatusHistory endDate="2012-03-01Z" startDate="2012-03-01Z" status="STD,">
+                                        <ns4:MonthlyPayStatus date="2012-03-01Z" status="STD"/>
+                                    </ns4:PayStatusHistory>
+                                    <ns4:CreditLimit>-1</ns4:CreditLimit>
+                                    <ns4:CashLimit>-1</ns4:CashLimit>
+                                    <ns4:EMIAmount>-1</ns4:EMIAmount>
+                                    <ns4:CollateralType abbreviation="" description="" rank="100000" symbol=""/>
+                                </ns4:GrantedTrade>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Tradeline>
+                        </ns4:TradeLinePartition>
+                        <ns4:TradeLinePartition accountTypeAbbreviation="" accountTypeDescription="" accountTypeSymbol="15">
+                            <ns4:Tradeline accountNumber="############10-1" accountsSoldTo="" branch="" bureau="" creditorName="SYNDICATE BANK" currentBalance="0" dateClosed="2012-03-23Z" dateOpened="2011-12-24Z" dateReported="2012-08-31Z" highBalance="700000" noOfParticipants="" position="4" settlementAmount="-1" subscriberCode="1150001" thirdPartyName="" writtenOffAmtTotal="-1" writtenOffPrincipal="-1">
+                                <ns4:AccountCondition abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:AccountDesignator abbreviation="" description="" rank="100000" symbol="1"/>
+                                <ns4:DisputeFlag abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:OpenClosed abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:PayStatus abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:VerificationIndicator abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:GrantedTrade actualPaymentAmount="-1" amountPastDue="0" collateral="-1" interestRate="-1.00" serialNumber="329917475" termMonths="-1">
+                                    <ns4:AccountType abbreviation="" description="" rank="100000" symbol="15"/>
+                                    <ns4:CreditType abbreviation="" description="" rank="100000" symbol="15"/>
+                                    <ns4:PaymentFrequency abbreviation="" description="" rank="100000" symbol=""/>
+                                    <ns4:TermType abbreviation="" description="" rank="100000" symbol=""/>
+                                    <ns4:WorstPayStatus abbreviation="" description="" rank="100000" symbol=""/>
+                                    <ns4:PayStatusHistory endDate="2011-12-01Z" startDate="2012-03-01Z" status="XXX,STD,STD,STD,">
+                                        <ns4:MonthlyPayStatus date="2012-03-01Z" status="XXX"/>
+                                        <ns4:MonthlyPayStatus date="2012-02-01Z" status="STD"/>
+                                        <ns4:MonthlyPayStatus date="2012-01-01Z" status="STD"/>
+                                        <ns4:MonthlyPayStatus date="2011-12-01Z" status="STD"/>
+                                    </ns4:PayStatusHistory>
+                                    <ns4:CreditLimit>-1</ns4:CreditLimit>
+                                    <ns4:CashLimit>-1</ns4:CashLimit>
+                                    <ns4:EMIAmount>-1</ns4:EMIAmount>
+                                    <ns4:CollateralType abbreviation="" description="" rank="100000" symbol=""/>
+                                </ns4:GrantedTrade>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Tradeline>
+                        </ns4:TradeLinePartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154972917" inquiryDate="2021-01-07Z" inquiryType="17" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154952166" inquiryDate="2021-01-04Z" inquiryType="17" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154859359" inquiryDate="2020-12-15Z" inquiryType="02" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154843687" inquiryDate="2020-12-14Z" inquiryType="06" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154829747" inquiryDate="2020-12-11Z" inquiryType="01" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154809385" inquiryDate="2020-12-09Z" inquiryType="10" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154796112" inquiryDate="2020-12-03Z" inquiryType="13" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154779097" inquiryDate="2020-12-02Z" inquiryType="13" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154762596" inquiryDate="2020-12-01Z" inquiryType="13" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154732258" inquiryDate="2020-11-18Z" inquiryType="03" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154692902" inquiryDate="2020-11-09Z" inquiryType="13" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154670389" inquiryDate="2020-10-31Z" inquiryType="05" subscriberName="NPRIYAN" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154652308" inquiryDate="2020-10-30Z" inquiryType="01" subscriberName="NPRIYAN" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154649184" inquiryDate="2020-10-29Z" inquiryType="05" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154631182" inquiryDate="2020-10-28Z" inquiryType="02" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154611919" inquiryDate="2020-10-26Z" inquiryType="10" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154588098" inquiryDate="2020-10-22Z" inquiryType="10" subscriberName="CITIBANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000000" bureau="" description="" enqControlNum="2154582557" inquiryDate="2020-10-20Z" inquiryType="10" subscriberName="NPRIYAN" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="50000" bureau="" description="" enqControlNum="3431584185" inquiryDate="2020-07-13Z" inquiryType="10" subscriberName="PNB" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="100" bureau="" description="" enqControlNum="2971038321" inquiryDate="2019-07-04Z" inquiryType="10" subscriberName="SBI CARD" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="100" bureau="" description="" enqControlNum="2926650603" inquiryDate="2019-06-03Z" inquiryType="10" subscriberName="SBI CARD" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="100" bureau="" description="" enqControlNum="2880274537" inquiryDate="2019-04-24Z" inquiryType="10" subscriberName="SBI CARD" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="100" bureau="" description="" enqControlNum="2842817814" inquiryDate="2019-03-23Z" inquiryType="10" subscriberName="SBI CARD" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="100" bureau="" description="" enqControlNum="2826057150" inquiryDate="2019-03-08Z" inquiryType="10" subscriberName="SBI CARD" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="100" bureau="" description="" enqControlNum="2816800167" inquiryDate="2019-03-01Z" inquiryType="10" subscriberName="SBI CARD" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="100" bureau="" description="" enqControlNum="2671111826" inquiryDate="2018-10-31Z" inquiryType="10" subscriberName="SBI CARD" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="15000" bureau="" description="" enqControlNum="2663272506" inquiryDate="2018-10-24Z" inquiryType="10" subscriberName="HSBC" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="100" bureau="" description="" enqControlNum="2656291060" inquiryDate="2018-10-20Z" inquiryType="10" subscriberName="SBI CARD" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="10000" bureau="" description="" enqControlNum="2628518804" inquiryDate="2018-09-27Z" inquiryType="10" subscriberName="ICICI BANK" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="50000" bureau="" description="" enqControlNum="1625087123" inquiryDate="2017-06-29Z" inquiryType="06" subscriberName="BAJAJ FIN LTD" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:InquiryPartition>
+                            <ns4:Inquiry amount="1" bureau="" description="" enqControlNum="1234390237" inquiryDate="2016-10-06Z" inquiryType="00" subscriberName="BOB" subscriberNumber="">
+                                <ns4:IndustryCode abbreviation="" description="" rank="100000" symbol=""/>
+                                <ns4:Source>
+                                    <ns4:BorrowerKey>2154735700</ns4:BorrowerKey>
+                                    <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                    <ns4:InquiryDate>2021-02-16Z</ns4:InquiryDate>
+                                    <ns4:Reference>112625ba-b0ae-4871-8c4f-0e3b6378e7e9</ns4:Reference>
+                                    <ns4:Locale>en_IN</ns4:Locale>
+                                </ns4:Source>
+                            </ns4:Inquiry>
+                        </ns4:InquiryPartition>
+                        <ns4:Message text="">
+                            <ns4:Code abbreviation="" description="" rank="100000" symbol=""/>
+                            <ns4:Type abbreviation="" description="" rank="100000" symbol="ZZ"/>
+                        </ns4:Message>
+                        <ns4:Sources>
+                            <ns4:Source>
+                                <ns4:Bureau abbreviation="" description="" rank="100000" symbol="CIBIL"/>
+                                <ns4:InquiryDate>2021-02-16T13:28:17.000Z</ns4:InquiryDate>
+                                <ns4:OriginalData/>
+                            </ns4:Source>
+                        </ns4:Sources>
+                        <ns4:SafetyCheckPassed>true</ns4:SafetyCheckPassed>
+                        <ns4:ReferenceKey>2155067991</ns4:ReferenceKey>
+                    </TrueLinkCreditReport>
+                </Asset>
+            </GetCustomerAssetsSuccess>
+        </GetCustomerAssetsResponse>
+    </soap:Body>
+</soap:Envelope>

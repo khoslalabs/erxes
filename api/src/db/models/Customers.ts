@@ -236,6 +236,8 @@ export const loadClass = () => {
      * Retreives customer
      */
     public static async getCustomer(_id: string) {
+      console.log("user id==================", _id)
+
       const customer = await Customers.findOne({ _id });
 
       if (!customer) {

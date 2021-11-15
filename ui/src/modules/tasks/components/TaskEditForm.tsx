@@ -40,26 +40,71 @@ type Props = {
 
 type StringState = {
   currentTab: string;
+  items: any;
+
 };
 
 type State = {} & StringState;
 
-const divStyle = {
-  background: '#F9F9F9',
-  padding: '20px',
-  margin: '20px'
-};
+// const divStyle = {
+//   background: '#F9F9F9',
+//   overflowY: 'scroll',
+//   padding: '20px',
+//   margin: '20px',
+//   height: '450px',
+//   display: 'block',
+// };
 
 export default class TaskEditForm extends React.Component<Props, State> {
   constructor(props) {
     super(props);
-
     const item = props.item;
-    console.log(item);
+    // console.log("----------------------------------taskitem", item && item.response);
     this.state = {
-      currentTab: 'deal'
+      currentTab: 'deal',
+      items: item && item.priority ? item.priority : 'low'
     };
   }
+  companyFormData = () => {
+    const item = this.props.item;
+    // console.log("items", item.response)
+    return {
+      title: item && item.response && item.response.formName,
+      location: item && item.response && item.response && item.response.data && item.response.data.shopLocationType,
+      owned: item && item.response && item.response && item.response.data && item.response.data.storeOwnership,
+      store_size: item.response && item.response && item.response.data && item.response.data.storeSize,
+      total_stores: item.response && item.response && item.response.data && item.response.data.numberStores,
+      earning_members: '2',
+      monthly_income: '',
+      shop_address: '',
+      bankEDCTerminal: item.response && item.response && item.response.data && item.response.data.bankEDCTerminal,
+      businessActivity: item.response && item.response && item.response.data && item.response.data.businessActivity,
+      businessVintage: item.response && item.response && item.response.data && item.response.data.businessVintage,
+      documentsCheck: item.response && item.response && item.response.data && item.response.data.documentsCheck,
+      firstNeighbourConfirmation: item.response && item.response && item.response.data && item.response.data.firstNeighbourConfirmation,
+      industry: item.response && item.response && item.response.data && item.response.data.industry,
+      neighbourCollectionAgents1: item.response && item.response && item.response.data && item.response.data.neighbourCollectionAgents1,
+      neighbourFeedback1: item.response && item.response && item.response.data && item.response.data.neighbourFeedback1,
+      neighbourIrregularity1: item.response && item.response && item.response.data && item.response.data.neighbourIrregularity1,
+      neighbourName1: item.response && item.response && item.response.data && item.response.data.neighbourName1,
+      neighbourName2: item.response && item.response && item.response.data && item.response.data.neighbourName2,
+      neighbourShopOpen1: item.response && item.response && item.response.data && item.response.data.neighbourShopOpen1,
+      neighbourYears1: item.response && item.response && item.response.data && item.response.data.neighbourYears1,
+      numberEDCTerminal: item.response && item.response && item.response.data && item.response.data.numberEDCTerminal,
+      numberEmployees: item.response && item.response && item.response.data && item.response.data.numberEmployees,
+      personMetDesignation: item.response && item.response && item.response.data && item.response.data.personMetDesignation,
+      personMetInShop: item.response && item.response && item.response.data && item.response.data.personMetInShop,
+      politicalConnectionneighbour1: item.response && item.response && item.response.data && item.response.data.politicalConnectionneighbour1,
+      roof: item.response && item.response && item.response.data && item.response.data.roof,
+      secondNeighbourConfirmation: item.response && item.response && item.response.data && item.response.data.secondNeighbourConfirmation,
+      shopContact: item.response && item.response && item.response.data && item.response.data.shopContact,
+      signBoardInShop: item.response && item.response && item.response.data && item.response.data.signBoardInShop,
+      stockSeen:item.response && item.response && item.response.data && item.response.data.stockSeen,
+      storeQuality: item.response && item.response && item.response.data && item.response.data.storeQuality,
+      upiAcceptance: item.response && item.response && item.response.data && item.response.data.upiAcceptance,
+      yearsInShop: item.response && item.response && item.response.data && item.response.data.yearsInShop,
+    };
+  };
 
   onChange = (name: string, value: string) => {
     this.setState({ [name]: value } as Pick<StringState, keyof StringState>);
@@ -72,7 +117,6 @@ export default class TaskEditForm extends React.Component<Props, State> {
       timeSpent: 0,
       status: STATUS_TYPES.STOPPED
     };
-
     return (
       <>
         <TaskTimer
@@ -129,12 +173,19 @@ export default class TaskEditForm extends React.Component<Props, State> {
         </HeaderRowSmall>
 
         {currentTab === 'response' && (
-          <div style={divStyle}>
+          <div style={{
+            background: '#F9F9F9',
+            overflowY: 'scroll',
+            padding: '20px',
+            margin: '20px',
+            height: '450px',
+            display: 'block',
+          }}>
             <Form
               schema={cpvPostSchema}
               // uiSchema={uiSchema}
               //
-              // formData={this.companyFormData()}
+              formData={this.companyFormData()}
             >
               <button type="submit" style={{ display: 'none' }} />
             </Form>
@@ -153,6 +204,11 @@ export default class TaskEditForm extends React.Component<Props, State> {
               item={item}
               addItem={addItem}
               onChangeStage={onChangeStage}
+              onChangePriority={(value) => {
+                // console.log("onChangePriority", value)
+                this.setState({ items: value })
+              }}
+              items={this.state.items}
             />
 
             <Sidebar

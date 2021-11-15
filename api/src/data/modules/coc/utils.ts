@@ -340,9 +340,9 @@ export class CommonBuilder<IListArgs extends ICommonListArgs> {
     if (this.params.searchValue) {
       this.params.autoCompletion
         ? this.searchByAutoCompletionType(
-            this.params.searchValue,
-            this.params.autoCompletionType || ''
-          )
+          this.params.searchValue,
+          this.params.autoCompletionType || ''
+        )
         : this.searchFilter(this.params.searchValue);
     }
 
@@ -371,7 +371,7 @@ export class CommonBuilder<IListArgs extends ICommonListArgs> {
       searchValue
     } = this.params;
     const paramKeys = Object.keys(this.params).join(',');
-
+    console.log("paramKeys=================================", paramKeys)
     const _page = Number(page || 1);
     let _limit = Number(perPage || 20);
 
@@ -405,7 +405,7 @@ export class CommonBuilder<IListArgs extends ICommonListArgs> {
         index: this.contentType,
         body: queryOptions
       });
-
+      console.log("totalCountResponse================", totalCountResponse)
       totalCount = totalCountResponse.count;
 
       queryOptions.from = (_page - 1) * _limit;
@@ -437,7 +437,7 @@ export class CommonBuilder<IListArgs extends ICommonListArgs> {
       index: this.contentType,
       body: queryOptions
     });
-
+    console.log("response================", response)
     if (action === 'count') {
       return response && response.count ? response.count : 0;
     }

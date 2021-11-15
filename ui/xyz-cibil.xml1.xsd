@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="com/truelink/ds/sch/report/truelink/v5" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Frozen" type="xs:string"/>
+  <xs:element name="Borrower" type="v5:BorrowerType" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+  <xs:element name="TradeLinePartition" type="v5:TradeLinePartitionType" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+  <xs:element name="InquiryPartition" type="v5:InquiryPartitionType" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+  <xs:element name="Message" type="v5:MessageType" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+  <xs:element name="Sources" type="v5:SourcesType" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+  <xs:element name="SafetyCheckPassed" type="xs:string"/>
+  <xs:element name="ReferenceKey" type="xs:string"/>
+  <xs:attribute name="currentversion" type="xs:string"/>
+  <xs:complexType name="CreditAddressType">
+    <xs:sequence>
+      <xs:element ref="v1:StreetAddress" xmlns:v1="com/truelink/ds/sch/pii/v1"/>
+      <xs:element ref="v1:City" xmlns:v1="com/truelink/ds/sch/pii/v1"/>
+      <xs:element ref="v1:PostalCode" xmlns:v1="com/truelink/ds/sch/pii/v1"/>
+      <xs:element ref="v1:Region" xmlns:v1="com/truelink/ds/sch/pii/v1"/>
+      <xs:element ref="v1:AddressType" xmlns:v1="com/truelink/ds/sch/pii/v1"/>
+      <xs:element ref="v1:SerialNumber" minOccurs="0" xmlns:v1="com/truelink/ds/sch/pii/v1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DwellingType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="OriginType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="OwnershipType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="BureauType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="SourceType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="BorrowerKey" minOccurs="0"/>
+      <xs:element type="v5:BureauType" name="Bureau" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element name="InquiryDate">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="2021-02-16Z"/>
+            <xs:enumeration value="2021-02-16T13:28:17.000Z"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="Reference" minOccurs="0"/>
+      <xs:element type="xs:string" name="Locale" minOccurs="0"/>
+      <xs:element type="xs:string" name="OriginalData" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BorrowerAddressType">
+    <xs:sequence>
+      <xs:element type="v5:CreditAddressType" name="CreditAddress" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:DwellingType" name="Dwelling" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:OriginType" name="Origin" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:OwnershipType" name="Ownership" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:SourceType" name="Source" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="addressOrder" use="optional"/>
+    <xs:attribute type="xs:string" name="dateReported" use="optional"/>
+    <xs:attribute type="xs:string" name="enrichMode" use="optional"/>
+    <xs:attribute type="xs:string" name="partitionSet" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="BirthDateType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="day"/>
+        <xs:attribute type="xs:string" name="month"/>
+        <xs:attribute type="xs:string" name="year"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="BirthType">
+    <xs:sequence>
+      <xs:element type="v5:BirthDateType" name="BirthDate" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:SourceType" name="Source" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="age"/>
+    <xs:attribute type="xs:string" name="date"/>
+    <xs:attribute type="xs:string" name="partitionSet"/>
+  </xs:complexType>
+  <xs:complexType name="StatementTypeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation"/>
+        <xs:attribute type="xs:string" name="description"/>
+        <xs:attribute type="xs:string" name="rank"/>
+        <xs:attribute type="xs:string" name="symbol"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="CreditStatementType">
+    <xs:sequence>
+      <xs:element type="v5:StatementTypeType" name="StatementType" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:SourceType" name="Source" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="dateUpdated"/>
+    <xs:attribute type="xs:string" name="statement"/>
+  </xs:complexType>
+  <xs:complexType name="FactorType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="CreditScoreFactorType">
+    <xs:sequence>
+      <xs:element type="v5:FactorType" name="Factor" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element name="FactorText" maxOccurs="unbounded" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="explain: One of the factors your CIBIL Score depends on is your credit activity. Every time you apply for a credit card/loan, the lender/credit institution makes an enquiry, which is captured in your CIBIL Report. A high number of such enquiries in the last 36 months will impact your CIBIL Score. Ensure your CIBIL Score is not impacted negatively by your credit activity. Do not apply for multiple loans or credit cards within a short period of time as this will make you look credit-hungry and will impact your CIBIL Score."/>
+            <xs:enumeration value="factor: One of the factors your CIBIL Score depends on is your credit activity. Every time you apply for a credit card/loan, the lender/credit institution makes an enquiry, which is captured in your CIBIL Report. A high number of such enquiries in the last 36 months will impact your CIBIL Score. Ensure your CIBIL Score is not impacted negatively by your credit activity. Do not apply for multiple loans or credit cards within a short period of time as this will make you look credit-hungry and will impact your CIBIL Score."/>
+            <xs:enumeration value="explain: Your exposure to credit has been less than six months from the date of the report. The more recent the account open dates across your credit profile the lower would be your CIBIL Score. Ensure you do not open too many credit card and loan accounts within a short period of time. Make sure you make timely payments towards all your accounts."/>
+            <xs:enumeration value="factor: Your exposure to credit has been less than six months from the date of the report. The more recent the account open dates across your credit profile the lower would be your CIBIL Score. Ensure you do not open too many credit card and loan accounts within a short period of time. Make sure you make timely payments towards all your accounts."/>
+            <xs:enumeration value="No Valid Factors"/>
+            <xs:enumeration value="We're sorry, but the adverse factors affecting your Credit Score are currently unavailable. Factors that may affect your score include: payment history, outstanding debt, credit account history, recent inquiries, types of credit and other features such as bankruptcies and collection accounts."/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="bureauCode" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="CreditScoreModelType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation"/>
+        <xs:attribute type="xs:string" name="description"/>
+        <xs:attribute type="xs:string" name="rank"/>
+        <xs:attribute type="xs:string" name="symbol"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="NoScoreReasonType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation"/>
+        <xs:attribute type="xs:string" name="description"/>
+        <xs:attribute type="xs:string" name="rank"/>
+        <xs:attribute type="xs:string" name="symbol"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="CreditScoreType">
+    <xs:sequence>
+      <xs:element type="v5:CreditScoreFactorType" name="CreditScoreFactor" maxOccurs="unbounded" minOccurs="0" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:CreditScoreModelType" name="CreditScoreModel" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:NoScoreReasonType" name="NoScoreReason" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:SourceType" name="Source" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="populationRank"/>
+    <xs:attribute type="xs:string" name="riskScore"/>
+    <xs:attribute type="xs:string" name="scoreName"/>
+  </xs:complexType>
+  <xs:complexType name="OccupationCodeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="description"/>
+        <xs:attribute type="xs:string" name="rank"/>
+        <xs:attribute type="xs:string" name="symbol"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="NetGrossIndicatorType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="description"/>
+        <xs:attribute type="xs:string" name="rank"/>
+        <xs:attribute type="xs:string" name="symbol"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="IncomeFreqIndicatorType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="description"/>
+        <xs:attribute type="xs:string" name="rank"/>
+        <xs:attribute type="xs:string" name="symbol"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="EmployerType">
+    <xs:sequence>
+      <xs:element type="v5:CreditAddressType" name="CreditAddress" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:OccupationCodeType" name="OccupationCode" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:NetGrossIndicatorType" name="NetGrossIndicator" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:IncomeFreqIndicatorType" name="IncomeFreqIndicator" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:SourceType" name="Source" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="account"/>
+    <xs:attribute type="xs:string" name="dateReported"/>
+    <xs:attribute type="xs:string" name="income"/>
+    <xs:attribute type="xs:string" name="name"/>
+    <xs:attribute type="xs:string" name="partitionSet"/>
+    <xs:attribute type="xs:string" name="serialNumber"/>
+  </xs:complexType>
+  <xs:complexType name="NameType">
+    <xs:sequence>
+      <xs:element ref="v1:Forename" xmlns:v1="com/truelink/ds/sch/pii/v1"/>
+      <xs:element ref="v1:Surname" xmlns:v1="com/truelink/ds/sch/pii/v1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NameTypeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation"/>
+        <xs:attribute type="xs:string" name="description"/>
+        <xs:attribute type="xs:string" name="rank"/>
+        <xs:attribute type="xs:string" name="symbol"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="BorrowerNameType">
+    <xs:sequence>
+      <xs:element type="v5:NameType" name="Name" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:NameTypeType" name="NameType" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:SourceType" name="Source" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="partitionSet"/>
+  </xs:complexType>
+  <xs:complexType name="PhoneNumberType">
+    <xs:sequence>
+      <xs:element ref="v1:Number" xmlns:v1="com/truelink/ds/sch/pii/v1"/>
+      <xs:element ref="v1:SerialNumber" xmlns:v1="com/truelink/ds/sch/pii/v1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PhoneTypeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="BorrowerTelephoneType">
+    <xs:sequence>
+      <xs:element type="v5:PhoneNumberType" name="PhoneNumber" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:PhoneTypeType" name="PhoneType" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:SourceType" name="Source" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="enrichMode" use="optional"/>
+    <xs:attribute type="xs:string" name="partitionSet" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="IDType">
+    <xs:sequence>
+      <xs:element ref="v1:IdentifierName" xmlns:v1="com/truelink/ds/sch/pii/v1"/>
+      <xs:element ref="v1:Id" xmlns:v1="com/truelink/ds/sch/pii/v1"/>
+      <xs:element ref="v1:SerialNumber" minOccurs="0" xmlns:v1="com/truelink/ds/sch/pii/v1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IdentifierType">
+    <xs:sequence>
+      <xs:element type="v5:IDType" name="ID" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:SourceType" name="Source" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="enrichMode" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="IdentifierPartitionType">
+    <xs:sequence>
+      <xs:element type="v5:IdentifierType" name="Identifier" maxOccurs="unbounded" minOccurs="0" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="BorrowerType">
+    <xs:sequence>
+      <xs:element type="v5:BorrowerAddressType" name="BorrowerAddress" maxOccurs="unbounded" minOccurs="0" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:BirthType" name="Birth" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:CreditStatementType" name="CreditStatement" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:CreditScoreType" name="CreditScore" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:EmployerType" name="Employer" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:BorrowerNameType" name="BorrowerName" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:BorrowerTelephoneType" name="BorrowerTelephone" maxOccurs="unbounded" minOccurs="0" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="xs:string" name="Gender"/>
+      <xs:element type="v5:IdentifierPartitionType" name="IdentifierPartition" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="borrowerKey"/>
+  </xs:complexType>
+  <xs:complexType name="AccountConditionType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AccountDesignatorType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DisputeFlagType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="IndustryCodeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="OpenClosedType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="PayStatusType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="VerificationIndicatorType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AccountTypeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="CreditTypeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="PaymentFrequencyType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TermTypeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="WorstPayStatusType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MonthlyPayStatusType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="date" use="optional"/>
+        <xs:attribute type="xs:string" name="status" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="PayStatusHistoryType">
+    <xs:sequence>
+      <xs:element type="v5:MonthlyPayStatusType" name="MonthlyPayStatus" maxOccurs="unbounded" minOccurs="0" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="endDate" use="optional"/>
+    <xs:attribute type="xs:string" name="startDate" use="optional"/>
+    <xs:attribute type="xs:string" name="status" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="CollateralTypeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+        <xs:attribute type="xs:string" name="description" use="optional"/>
+        <xs:attribute type="xs:string" name="rank" use="optional"/>
+        <xs:attribute type="xs:string" name="symbol" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="GrantedTradeType">
+    <xs:sequence>
+      <xs:element type="v5:AccountTypeType" name="AccountType" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:CreditTypeType" name="CreditType" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:PaymentFrequencyType" name="PaymentFrequency" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:TermTypeType" name="TermType" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:WorstPayStatusType" name="WorstPayStatus" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:PayStatusHistoryType" name="PayStatusHistory" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element name="CreditLimit">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="80000"/>
+            <xs:enumeration value="-1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="CashLimit">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="16000"/>
+            <xs:enumeration value="48000"/>
+            <xs:enumeration value="-1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="EMIAmount"/>
+      <xs:element type="v5:CollateralTypeType" name="CollateralType" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="actualPaymentAmount" use="optional"/>
+    <xs:attribute type="xs:string" name="amountPastDue" use="optional"/>
+    <xs:attribute type="xs:string" name="collateral" use="optional"/>
+    <xs:attribute type="xs:string" name="interestRate" use="optional"/>
+    <xs:attribute type="xs:string" name="serialNumber" use="optional"/>
+    <xs:attribute type="xs:string" name="termMonths" use="optional"/>
+    <xs:attribute type="xs:string" name="dateLastPayment" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="TradelineType">
+    <xs:sequence>
+      <xs:element type="v5:AccountConditionType" name="AccountCondition" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:AccountDesignatorType" name="AccountDesignator" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:DisputeFlagType" name="DisputeFlag" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:IndustryCodeType" name="IndustryCode" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:OpenClosedType" name="OpenClosed" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:PayStatusType" name="PayStatus" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:VerificationIndicatorType" name="VerificationIndicator" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:GrantedTradeType" name="GrantedTrade" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:SourceType" name="Source" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="accountNumber" use="optional"/>
+    <xs:attribute type="xs:string" name="accountsSoldTo" use="optional"/>
+    <xs:attribute type="xs:string" name="branch" use="optional"/>
+    <xs:attribute type="xs:string" name="bureau" use="optional"/>
+    <xs:attribute type="xs:string" name="creditorName" use="optional"/>
+    <xs:attribute type="xs:string" name="currentBalance" use="optional"/>
+    <xs:attribute type="xs:string" name="dateOpened" use="optional"/>
+    <xs:attribute type="xs:string" name="dateReported" use="optional"/>
+    <xs:attribute type="xs:string" name="highBalance" use="optional"/>
+    <xs:attribute type="xs:string" name="noOfParticipants" use="optional"/>
+    <xs:attribute type="xs:string" name="position" use="optional"/>
+    <xs:attribute type="xs:string" name="settlementAmount" use="optional"/>
+    <xs:attribute type="xs:string" name="subscriberCode" use="optional"/>
+    <xs:attribute type="xs:string" name="thirdPartyName" use="optional"/>
+    <xs:attribute type="xs:string" name="writtenOffAmtTotal" use="optional"/>
+    <xs:attribute type="xs:string" name="writtenOffPrincipal" use="optional"/>
+    <xs:attribute type="xs:string" name="dateAccountStatus" use="optional"/>
+    <xs:attribute type="xs:string" name="dateClosed" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="TradeLinePartitionType">
+    <xs:sequence>
+      <xs:element type="v5:TradelineType" name="Tradeline" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="accountTypeAbbreviation" use="optional"/>
+    <xs:attribute type="xs:string" name="accountTypeDescription" use="optional"/>
+    <xs:attribute type="xs:string" name="accountTypeSymbol" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="InquiryType">
+    <xs:sequence>
+      <xs:element type="v5:IndustryCodeType" name="IndustryCode" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:SourceType" name="Source" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="amount" use="optional"/>
+    <xs:attribute type="xs:string" name="bureau" use="optional"/>
+    <xs:attribute type="xs:string" name="description" use="optional"/>
+    <xs:attribute type="xs:string" name="enqControlNum" use="optional"/>
+    <xs:attribute type="xs:string" name="inquiryDate" use="optional"/>
+    <xs:attribute type="xs:string" name="inquiryType" use="optional"/>
+    <xs:attribute type="xs:string" name="subscriberName" use="optional"/>
+    <xs:attribute type="xs:string" name="subscriberNumber" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="InquiryPartitionType">
+    <xs:sequence>
+      <xs:element type="v5:InquiryType" name="Inquiry" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CodeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation"/>
+        <xs:attribute type="xs:string" name="description"/>
+        <xs:attribute type="xs:string" name="rank"/>
+        <xs:attribute type="xs:string" name="symbol"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="TypeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="abbreviation"/>
+        <xs:attribute type="xs:string" name="description"/>
+        <xs:attribute type="xs:string" name="rank"/>
+        <xs:attribute type="xs:string" name="symbol"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="MessageType">
+    <xs:sequence>
+      <xs:element type="v5:CodeType" name="Code" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+      <xs:element type="v5:TypeType" name="Type" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="text"/>
+  </xs:complexType>
+  <xs:complexType name="SourcesType">
+    <xs:sequence>
+      <xs:element type="v5:SourceType" name="Source" xmlns:v5="com/truelink/ds/sch/report/truelink/v5"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

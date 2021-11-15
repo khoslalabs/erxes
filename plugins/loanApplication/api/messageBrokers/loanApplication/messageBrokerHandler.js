@@ -1,7 +1,7 @@
 import messageBrokerUtils from './messageBrokerUtils'
 import { isNull, isUndefined } from 'lodash'
 
-async function createCustomer (data, resolvers, { models }) {
+async function createCustomer(data, resolvers, { models }) {
   const { customer, integrationId, userId } = data
   try {
     let root
@@ -30,7 +30,7 @@ async function createCustomer (data, resolvers, { models }) {
   }
 }
 
-async function createCompany (data, resolvers, { models }) {
+async function createCompany(data, resolvers, { models }) {
   const { primaryBorrowerId, company, integrationId, userId } = data
   try {
     // FIXME: Need a better search of comapny. Maybe with company ID
@@ -60,7 +60,7 @@ async function createCompany (data, resolvers, { models }) {
   }
 }
 
-async function createLoanApplication (data, resolvers, context) {
+async function createLoanApplication(data, resolvers, context) {
   const { models, logUtils } = context
   const {
     userId,
@@ -103,8 +103,8 @@ async function createLoanApplication (data, resolvers, context) {
   }
 }
 
-async function createNewDeal (data, resolvers, { models }) {
-  const { loanApplicationId, userId, boardName, pipeLineName, productCode} = data
+async function createNewDeal(data, resolvers, { models }) {
+  const { loanApplicationId, userId, boardName, pipeLineName, productCode } = data
   // Find the correct board
   // Then get the correct pipeline
   // Then create the deal for that pipeline
@@ -176,6 +176,7 @@ async function createNewDeal (data, resolvers, { models }) {
     throw new Error(e.message)
   }
 }
+
 const createCoBorrower = async (data, resolvers, { models }) => {
   try {
     const { loanAplicationId, ...rest } = data
@@ -198,6 +199,7 @@ const createCoBorrower = async (data, resolvers, { models }) => {
     throw new Error(e.message)
   }
 }
+
 const updateCustomer = async (data, resolvers, { models }) => {
   const { userId, customer } = data
   try {
@@ -259,11 +261,11 @@ const updateLoanApplication = async (data, resolvers, { models }) => {
     }
     let root
 
-    const application = await models.LoanApplications.findOne({_id: data.loanApplication._id})
+    const application = await models.LoanApplications.findOne({ _id: data.loanApplication._id })
 
     if (data.loanApplication.stageName != undefined) {
-      const stage = await models.Stages.findOne({name: data.loanApplication.stageName})
-      if (stage != null && stage != undefined){
+      const stage = await models.Stages.findOne({ name: data.loanApplication.stageName })
+      if (stage != null && stage != undefined) {
         loanApplication.stageId = stage.doc._id
       }
     }
@@ -291,25 +293,56 @@ const updateLoanApplication = async (data, resolvers, { models }) => {
   }
 }
 
-const updateTask = async (data, resovlers, {models}) => {
+const updateTask = async (data, resovlers, { models }) => {
+  console.log("step2------------------------UPDATE DATA", data)
   const { task, loanApplicationId, userId, boardName, pipeLineName, details } = data
   const priorities = ['Low', 'Normal', 'High', 'Critical']
+  let obj = {
+    "userId": "YbZqPSiRdZGChZzEi",
+    "kind": "los",
+    "action": "updateTask",
+    "token": "1",
+    "messageQueueToken": "1",
+    "data": {
+      // "_id": "zBSPLWNyNZnvvvm4E",
+      "_id": "Mj7ztTxga4wsR3hyt",
+      "loanApplicationId": "3Yu5J7c4pzBiR3kyS",
+      "taskType": "cpv",
+      "stageId": "CPV Complete",
+      "priority": "High",
+      "status": "completed"
+    }
+  }
   try {
-    const task = await models.tasks.findOne({ _id: taskId })
+    console.log("Task ID=================", obj.data['_id'])
+    console.log("models", models)
+    const task = await models.Tasks.findOne({ _id: obj.data['_id'] })
+    const stage = await models.Stages.findOne({ name: obj.data['stageId'] })
+    console.log("stage", stage)
+    if (obj.data && obj.data['stageId'] && obj.data['stageId'] !== undefined) {
+      task.stageId = stage._id
+    }
+    // task.stageId = obj.data['stageId']
+    task.priority = obj.data['priority']
+    let id = obj.data['_id']
+    console.log("task>>>>>>>>>>>>>>>", task)
+    console.log("priorities", priorities)
+    console.log("priorities.indexOf(task.priority)", priorities.indexOf(task.priority))
+    await models.Tasks.updateOne({ _id: id }, { $set: task });
     if (isNull(task)) {
       throw new Error('TASK_NOT_FOUND')
     }
-    if (priorities.indexOf(priority) === -1) {
+    if (priorities.indexOf(task.priority) === -1) {
       throw new Error('PRORITY_NOT_SUPPORTED')
     }
-
-  }catch (e){
+  } catch (e) {
     console.log(e.stack)
     throw new Error(e.message)
   }
 }
 
 const createTask = async (data, resolvers, { models }) => {
+  console.log("data plugin=================",data)
   const { task, loanApplicationId, userId, boardName, pipeLineName, details } = data
   try {
     const loanApplication = await models.LoanApplications.findOne({
@@ -393,7 +426,7 @@ const changeTaskPriority = async (data, resolvers, { models }) => {
       _id: task.id,
       processId: Math.random(),
       priority
-    },user)
+    }, user)
     return {
       taskId: task.id
     }
@@ -436,6 +469,7 @@ const getCustomer = async (data, resolvers, { models }) => {
   return customer
 }
 const getCompany = async (data, resolvers, { models }) => {
+  console.log("get")
   const { userId, companyId } = data
   const user = await models.Users.findOne({ _id: userId })
   if (isNull(user)) {
@@ -463,5 +497,6 @@ export default {
   changeTaskPriority,
   createCoBorrower,
   getCustomer,
-  getCompany
+  getCompany,
+  updateTask
 }

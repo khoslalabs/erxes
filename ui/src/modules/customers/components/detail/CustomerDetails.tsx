@@ -82,7 +82,26 @@ class CustomerDetails extends React.Component<Props> {
 
   render() {
     const { customer, fields, deviceFields, taggerRefetchQueries } = this.props;
-
+    console.log("Left Side Bar customer", customer)
+    // delete customer.firstName
+    // let obj = {
+    //   "canHide": true,
+    //   "contentType": "customer",
+    //   "description": "null",
+    //   "groupId": "qLZxWpAKAFof5tfob",
+    //   isDefinedByErxes: true,
+    //   isVisible: true,
+    //   isVisibleInDetail: true,
+    //   // lastUpdatedUser: "null",
+    //   options: [],
+    //   order: "null",
+    //   text: "Trisha",
+    //   type: "trisha",
+    //   validation: "",
+    //   __typename: "Field",
+    //   _id: "d5D2aw58hAXpPhHng"
+    // }
+    // fields.push(obj)
     const breadcrumb = [
       { title: __('Contacts'), link: '/contacts' },
       { title: renderFullName(customer) }

@@ -1,3 +1,4 @@
+// import { AnyARecord, AnyNaptrRecord } from 'dns';
 import SelectItem from 'modules/boards/components/SelectItem';
 import { PRIORITIES } from 'modules/boards/constants';
 import Watch from 'modules/boards/containers/editForm/Watch';
@@ -21,13 +22,17 @@ type Props = {
   onUpdate: (item: IItem, prevStageId?: string) => void;
   sendToBoard?: (item: any) => void;
   onChangeStage?: (stageId: string) => void;
+  onChangePriority: (item: any) => void;
+  items: any;
 };
 
 class Actions extends React.Component<Props> {
   onPriorityChange = (value: string) => {
-    const { onUpdate, saveItem } = this.props;
 
+    const { onUpdate, saveItem, onChangePriority } = this.props;
+    onChangePriority(value)
     if (saveItem) {
+      debugger
       saveItem({ priority: value }, updatedItem => {
         onUpdate(updatedItem);
       });
@@ -42,19 +47,28 @@ class Actions extends React.Component<Props> {
       copyItem,
       removeItem,
       sendToBoard,
-      onChangeStage
+      onChangeStage,
+      items
     } = this.props;
 
     const onLabelChange = labels => saveItem({ labels });
 
     const priorityTrigger = (
+      // <ColorButton>
+      //   {item.priority ? (
+      //     <PriorityIndicator value={item.priority} />
+      //   ) : (
+      //     <Icon icon="sort-amount-up" />
+      //   )}
+      //   {item.priority ? item.priority : __('Priority')}
+      // </ColorButton>
       <ColorButton>
-        {item.priority ? (
-          <PriorityIndicator value={item.priority} />
+        {items ? (
+          <PriorityIndicator value={items} />
         ) : (
           <Icon icon="sort-amount-up" />
         )}
-        {item.priority ? item.priority : __('Priority')}
+        {items ? items : __('Priority')}
       </ColorButton>
     );
 
@@ -62,7 +76,8 @@ class Actions extends React.Component<Props> {
       <ActionContainer>
         <SelectItem
           items={PRIORITIES}
-          selectedItems={item.priority}
+          selectedItems={items}
+          // selectedItems={item.priority}
           onChange={this.onPriorityChange}
           trigger={priorityTrigger}
         />

@@ -9,7 +9,7 @@ import {
 import { IAttachment, QueryResponse } from 'modules/common/types';
 import { ISavedConformity } from 'modules/conformity/types';
 import { IUser } from '../auth/types';
-import { ICompany } from '../companies/types';
+// import { ICompany } from '../companies/types';
 import { ICustomer } from '../customers/types';
 
 export interface IOptions {
@@ -132,7 +132,8 @@ export interface IItem {
   assignedUserIds?: string[];
   assignedUsers: IUser[];
   createdUser?: IUser;
-  companies: ICompany[];
+  companies: any;
+  // companies:ICompany[];
   customers: ICustomer[];
   attachments?: IAttachment[];
   labels: IPipelineLabel[];
@@ -153,6 +154,41 @@ export interface IItem {
   };
   customFieldsData?: {
     [key: string]: any;
+  };
+  response: {
+    formName: string
+    data: {
+      shopLocationType: string;
+      storeOwnership: string;
+      storeSize: number;
+      numberStores: number;
+      bankEDCTerminal: string;
+      businessActivity: string;
+      businessVintage: number;
+      documentsCheck: string;
+      firstNeighbourConfirmation: string;
+      industry: string;
+      neighbourCollectionAgents1: string;
+      neighbourFeedback1: string;
+      neighbourIrregularity1: string;
+      neighbourName1: string;
+      neighbourName2: string;
+      neighbourShopOpen1: string;
+      neighbourYears1: number;
+      numberEDCTerminal: number;
+      numberEmployees: number;
+      personMetDesignation: string;
+      personMetInShop: string;
+      politicalConnectionneighbour1: string;
+      roof: string;
+      secondNeighbourConfirmation: string;
+      shopContact: string;
+      signBoardInShop: string;
+      stockSeen:string;
+      storeQuality: string;
+      upiAcceptance: string;
+      yearsInShop: number;
+    }
   };
 }
 

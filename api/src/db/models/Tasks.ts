@@ -8,6 +8,8 @@ import {
 import { IItemCommonFields as ITask } from './definitions/boards';
 import { ACTIVITY_CONTENT_TYPES } from './definitions/constants';
 import { ITaskDocument, taskSchema } from './definitions/tasks';
+import { Request, Response, NextFunction } from 'express';
+// import { Request } from 'aws-sdk';
 
 export interface ITaskModel extends Model<ITaskDocument> {
   createTask(doc: ITask): Promise<ITaskDocument>;
@@ -42,6 +44,8 @@ export const loadTaskClass = () => {
      * Create a Task
      */
     public static async createTask(doc: ITask) {
+      console.log("doc-------------------------- inside", doc)
+      // return false
       if (doc.sourceConversationIds) {
         const convertedTask = await Tasks.findOne({
           sourceConversationIds: { $in: doc.sourceConversationIds }
@@ -51,15 +55,51 @@ export const loadTaskClass = () => {
           throw new Error('Already converted a task');
         }
       }
-
+      // return false
       const task = await Tasks.create({
         ...doc,
         createdAt: new Date(),
         modifiedAt: new Date(),
         stageChangedDate: new Date(),
-        searchText: fillSearchTextItem(doc)
+        searchText: fillSearchTextItem(doc),
+        response: {
+          "formName": "CPVForm",
+          "data": {
+            "personMetInShop": "suresh",
+            "personMetDesignation": "self",
+            "signBoardInShop": "yes",
+            "businessVintage": 4,
+            "yearsInShop": 3,
+            "industry": "MobilePhone",
+            "storeOwnership": "owned",
+            "numberEmployees": 2,
+            "numberStores": 4,
+            "numberEDCTerminal": 3,
+            "bankEDCTerminal": "SBI",
+            "upiAcceptance": "+91 89704 23891",
+            "storeQuality": "medium",
+            "businessActivity": "notBusy",
+            "stockSeen": "yes",
+            "roof": "yes",
+            "shopContact": "+91 89704 23891",
+            "shopLocationType": "market",
+            "storeSize": 500,
+            "documentsCheck": true,
+            "firstNeighbourConfirmation": "yes",
+            "neighbourName2": "Vikram",
+            "secondNeighbourConfirmation": "yes",
+            "neighbourName1": "Thiru",
+            "neighbourShopOpen1": "yes",
+            "neighbourIrregularity1": "no",
+            "neighbourCollectionAgents1": "yes",
+            "politicalConnectionneighbour1": "no",
+            "neighbourFeedback1": "positive",
+            "neighbourYears1": 4
+          },
+          "applicationId": "325306"
+        }
       });
-
+      console.log("craete task>>>>>>>>>>>>>>>>>>>", task)
       await putActivityLog({
         action: ACTIVITY_LOG_ACTIONS.CREATE_BOARD_ITEM,
         data: { item: task, contentType: 'task' }
@@ -72,6 +112,7 @@ export const loadTaskClass = () => {
      * Update Task
      */
     public static async updateTask(_id: string, doc: ITask) {
+      console.log("step1-------------------------------doc", doc,_id)
       const searchText = fillSearchTextItem(doc, await Tasks.getTask(_id));
 
       await Tasks.updateOne({ _id }, { $set: doc, searchText });
@@ -83,6 +124,7 @@ export const loadTaskClass = () => {
      * Watch task
      */
     public static async watchTask(_id: string, isAdd: boolean, userId: string) {
+    console.log("_id==================================", _id, isAdd, userId)
       return watchItem(Tasks, _id, isAdd, userId);
     }
 
@@ -123,7 +165,16 @@ export const loadTaskClass = () => {
 
 loadTaskClass();
 
-// tslint:disable-next-line
+
+// export const getPost = async (req: Request, res: Response, next: NextFunction) => {
+//   // get the post id from the req
+//   console.log("req=======================", req.body)
+
+//   // let id: string = req.params.id;
+//   // console.log("id=======================",id)
+
+// };
+
 const Tasks = model<ITaskDocument, ITaskModel>('tasks', taskSchema);
 
 export default Tasks;

@@ -29,6 +29,7 @@ export default class LeftSidebar extends React.Component<Props> {
       wide,
       taggerRefetchQueries
     } = this.props;
+    console.log("LEFT FILED",fields)
     return (
       <Sidebar wide={wide}>
         <BasicInfoSection customer={customer} fields={fields} />

@@ -3,7 +3,7 @@ import Icon from 'modules/common/components/Icon';
 import ModalTrigger from 'modules/common/components/ModalTrigger';
 import CURRENCIES from 'modules/common/constants/currencies';
 import { __ } from 'modules/common/utils';
-import { MEASUREMENTS } from 'modules/settings/general/constants';
+// import { MEASUREMENTS } from 'modules/settings/general/constants';
 import { IProduct } from 'modules/settings/productService/types';
 import SelectTeamMembers from 'modules/settings/team/containers/SelectTeamMembers';
 import React from 'react';
@@ -198,13 +198,14 @@ class ProductItem extends React.Component<Props, State> {
       this.props.productData._id
     );
 
-  onChange = e =>
+  onChange = e => {
+    // debugger
     this.onChangeField(
       (e.target as HTMLInputElement).name,
       (e.target as HTMLInputElement).value,
       this.props.productData._id
     );
-
+  }
   onClick = () => {
     const { productData, removeProductItem } = this.props;
 
@@ -229,7 +230,8 @@ class ProductItem extends React.Component<Props, State> {
   };
 
   renderForm = () => {
-    const { productData, uom, currencies } = this.props;
+    const { productData, currencies } = this.props;
+    // console.log("productData-====================", productData)
     const selectOption = option => (
       <div className="simple-option">
         <span>{option.label}</span>
@@ -245,17 +247,25 @@ class ProductItem extends React.Component<Props, State> {
           <ContentRow>
             <ProductSettings>
               <ItemRow>
-                <ItemText>{__('Tick paid or used')}:</ItemText>
+                {/* <ItemText>{__('Tick paid or used')}:</ItemText> */}
+                <ItemText>{__('Product Quantity')}</ItemText>
                 <ContentColumn flex="3">
-                  <FormControl
+                  {/* <FormControl
                     componentClass="checkbox"
                     checked={productData.tickUsed}
                     onChange={this.onTickUse}
+                  /> */}
+                  <FormControl
+                    value={productData.quantity || ''}
+                    type="text"
+                    // placeholder="0"
+                    name="quantity"
+                    onChange={this.onChange}
                   />
                 </ContentColumn>
               </ItemRow>
               <ItemRow>
-                <ItemText>{__('UOM')}:</ItemText>
+                {/* <ItemText>{__('UOM')}:</ItemText>
                 <ContentColumn flex="3">
                   <Select
                     name="uom"
@@ -264,6 +274,47 @@ class ProductItem extends React.Component<Props, State> {
                     onChange={this.uomOnChange}
                     optionRenderer={selectOption}
                     options={selectConfigOptions(uom, MEASUREMENTS)}
+                  />
+                </ContentColumn> */}
+                <ItemText>{__('Loan Amount')}:</ItemText>
+                <ContentColumn flex="3">
+                  {/* <FormControl
+                    value={productData.amount || ''}
+                    type="number"
+                    placeholder="0"
+                    name="amount"
+                    onChange={this.onChange}
+                  /> */}
+                  <FormControl
+                    value={productData.amount || ''}
+                    type="number"
+                    placeholder="0"
+                    name="amount"
+                    onChange={this.onChange}
+                  />
+                </ContentColumn>
+              </ItemRow> 
+              <ItemRow>
+                <ItemText>{__('Processing Fees')}:</ItemText>
+                <ContentColumn flex="3">
+                  <FormControl
+                    value={productData.processingFees || ''}
+                    type="number"
+                    placeholder="0"
+                    name="processingFees"
+                    onChange={this.onChange}
+                  />
+                </ContentColumn>
+              </ItemRow>
+              <ItemRow>
+                <ItemText>{__('Loan Tenure In Months')}:</ItemText>
+                <ContentColumn flex="3">
+                  <FormControl
+                    value={productData.loanTenureInMonths || ''}
+                    type="number"
+                    placeholder="0"
+                    name="loanTenureInMonths"
+                    onChange={this.onChange}
                   />
                 </ContentColumn>
               </ItemRow>
@@ -412,7 +463,6 @@ class ProductItem extends React.Component<Props, State> {
 
   render() {
     const { productData } = this.props;
-
     return (
       <ProductRow
         key={productData._id}

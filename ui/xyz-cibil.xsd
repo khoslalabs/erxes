@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="com/truelink/ds/sch/pii/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="StreetAddress">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="BAHADURGAR NEW DELHI"/>
+        <xs:enumeration value="SEC-3 ROHINI NEW DELHI"/>
+        <xs:enumeration value="DELHI NEW DELHI"/>
+        <xs:enumeration value=""/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="City" type="xs:string"/>
+  <xs:element name="PostalCode">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="110006"/>
+        <xs:enumeration value="110085"/>
+        <xs:enumeration value=""/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="Region">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="07"/>
+        <xs:enumeration value=""/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="AddressType" type="xs:string"/>
+  <xs:element name="SerialNumber">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="1115093905"/>
+        <xs:enumeration value="1100993458"/>
+        <xs:enumeration value="1030961068"/>
+        <xs:enumeration value="1030961067"/>
+        <xs:enumeration value="1057082328"/>
+        <xs:enumeration value="800291602"/>
+        <xs:enumeration value="800291601"/>
+        <xs:enumeration value="193435435"/>
+        <xs:enumeration value="65169762"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="Forename" type="xs:string"/>
+  <xs:element name="Surname" type="xs:string"/>
+  <xs:element name="Number" type="xs:string"/>
+  <xs:element name="IdentifierName">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="SocialId"/>
+        <xs:enumeration value="TaxId"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="Id" type="xs:string"/>
+</xs:schema>

@@ -8,6 +8,7 @@ import {
 import { IField } from 'modules/settings/properties/types';
 import React from 'react';
 import { ICompany } from '../../types';
+import axios from 'axios';
 
 type Props = {
   company: ICompany;
@@ -60,6 +61,51 @@ class DetailInfo extends React.Component<Props> {
       </SidebarFlexRow>
     );
   }
+  rendernewRow(field, value?: string) {
+    return (
+      <li>
+        <FieldStyle>{field}:</FieldStyle>
+        <SidebarCounter>
+          {value}
+        </SidebarCounter>
+      </li>
+    );
+  }
+
+  downloadFile(){
+    let BaseUrl ="https://dev-codeapp.novopay.in/lending/download?id=6188f9e3ce646"
+           axios.get(BaseUrl,{
+               headers: {
+                   'Content-Type': 'application/json',
+                   'X-Appwrite-Project' : '616fff40c117e',
+                   'X-Appwrite-Key': '5958c59e6492a29dcc621ca18530e7f5e111a924a4985841f0da8849380664f95bd75d4186c12aae48423776401a209ca8dfaa4655f955639818d999779b50fd8766b429eef2d6e8b460ed09806d3f8742f8043e572d61edd3ac6ad1a53fb2f6f1c9603a6f8025459d3be82df6936d56e03d54c481e57fce4a031f6c63bd0b08'
+               }
+               })
+               .then(function (response) {
+               })
+   }
+
+  renderCIBIL() {
+    return (
+      <li>
+        <FieldStyle>{__('CIBIL')}:</FieldStyle>
+        <SidebarCounter>
+          <a href={""} download="CIBIL_File.pdf" onClick={this.downloadFile}> Download</a>
+        </SidebarCounter>
+      </li>
+    );
+  }
+
+  renderGST() {
+    return (
+      <li>
+        <FieldStyle>{__('GST')}:</FieldStyle>
+        <SidebarCounter>
+          <a href={""} download="GST_File.pdf" onClick={this.downloadFile}> Download</a>
+        </SidebarCounter>
+      </li>
+    );
+  }
 
   render() {
     const { company } = this.props;
@@ -84,6 +130,12 @@ class DetailInfo extends React.Component<Props> {
         {this.renderRow('businessType', company.businessType)}
         {this.renderRow('isSubscribed', company.isSubscribed)}
         {this.renderDescription(company.description)}
+        {this.rendernewRow('GST', "29AAECN6114F1ZK")}
+        {this.rendernewRow('Udyam', "UDYAM-RJ-17-0000034")}
+        {this.rendernewRow('Shop & Establishment license check? ', 'true')}
+        {this.renderCIBIL()}
+        {this.renderGST()}
+
       </SidebarList>
     );
   }

@@ -210,7 +210,8 @@ export const commonItemFieldsSchema = {
     type: [customFieldSchema],
     optional: true,
     label: 'Custom fields data'
-  })
+  }),
+  response: field({ type: Object }),
 };
 
 export const boardSchema = schemaWrapper(

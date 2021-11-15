@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Envelope" type="soapenv:EnvelopeType" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"/>
+  <xs:complexType name="BodyType">
+    <xs:sequence>
+      <xs:element ref="v2:GetCustomerAssetsResponse" xmlns:v2="com/transunion/gccs/core/services/v2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EnvelopeType">
+    <xs:sequence>
+      <xs:element type="soapenv:BodyType" name="Body" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

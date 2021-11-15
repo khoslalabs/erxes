@@ -1,0 +1,230 @@
+{
+    "userId": "YbZqPSiRdZGChZzEi",
+    "kind": "los",
+    "action": "createLoanApplication",
+    "data": {
+        "primaryBorrowerId": "zybLHDqPCjnhJxuTe",
+        "coBorrowerId": "zxq78WzLmuTehbKJQ",
+        "companyId": "yExDmDP68iB4ztnq9",
+        "softCreditId": "4qP9oefuR",
+        "productType": "shortterm",
+        "bureauCreditScoreRefId": "Y52s2gKXG",
+        "applicationDocuments": [
+            {
+                "documentType": "pan",
+                "documentName": "pan",
+                "documentRefId": "4fZhBr",
+                "documentVerified": true,
+                "documentVerificationDetails": {
+                    "verified": true,
+                    "verificationSource": "Karxxa"
+                }
+            },
+            {
+                "documentType": "udyam",
+                "documentName": "udyam",
+                "documentRefId": "6GNp7g",
+                "documentVerified": true,
+                "documentVerificationDetails": {
+                    "verified": true,
+                    "verificationSource": "Karxxa"
+                }
+            },
+            {
+                "documentType": "sne",
+                "documentName": "sne",
+                "documentRefId": "4ZkPJB",
+                "documentVerified": true,
+                "documentVerificationDetails": {
+                    "verified": true,
+                    "verificationSource": "Karxxa"
+                }
+            },
+            {
+                "documentType": "mobile-bill",
+                "documentName": "mobile-bill",
+                "documentRefId": "NyP5WZ",
+                "documentVerified": true,
+                "documentVerificationDetails": {
+                    "verified": true,
+                    "verificationSource": "Karxxa"
+                }
+            },
+            {
+                "documentType": "bank-statement",
+                "documentName": "bank-statement",
+                "documentRefId": "kJ2pJt",
+                "documentVerified": true,
+                "documentVerificationDetails": {
+                    "verified": true,
+                    "verificationSource": "Karxxa"
+                }
+            }
+        ],
+        "borrowerType": "retailer",
+        "loanOffers": [
+            {
+                "loanProduct": "100 Day Loan",
+                "productCode": "9885",
+                "loanAmount": 500000,
+                "interestRate": 2.5,
+                "interestFrequency": "per-month",
+                "loanTenureInDays": 100,
+                "loanOfferStage": "revised",
+                "loanOfferDate": "2021-08-01T22:05:28.694Z",
+                "processingFeesPercent": 3,
+                "processingFeesFixed": 100,
+                "lender": "NP"
+            },
+            {
+                "loanProduct": "100 Day Loan",
+                "productCode": "9885",
+                "loanAmount": 500000,
+                "interestRate": 2.5,
+                "interestFrequency": "per-month",
+                "loanTenureInDays": 100,
+                "loanOfferStage": "revised",
+                "loanOfferDate": "2021-08-01T22:05:28.694Z",
+                "processingFeesPercent": 3,
+                "processingFeesFixed": 100,
+                "lender": "NP"
+            },
+            {
+                "loanProduct": "100 Day Loan",
+                "productCode": "9885",
+                "loanAmount": 500000,
+                "interestRate": 2.5,
+                "interestFrequency": "per-month",
+                "loanTenureInDays": 100,
+                "loanOfferStage": "revised",
+                "loanOfferDate": "2021-08-01T22:05:28.694Z",
+                "processingFeesPercent": 3,
+                "processingFeesFixed": 100,
+                "lender": "NP"
+            },
+            {
+                "loanProduct": "100 Day Loan",
+                "productCode": "9885",
+                "loanAmount": 500000,
+                "interestRate": 2.5,
+                "interestFrequency": "per-month",
+                "loanTenureInDays": 100,
+                "loanOfferStage": "revised",
+                "loanOfferDate": "2021-08-01T22:05:28.694Z",
+                "processingFeesPercent": 3,
+                "processingFeesFixed": 100,
+                "lender": "NP"
+            },
+            {
+                "loanProduct": "100 Day Loan",
+                "productCode": "9885",
+                "loanAmount": 500000,
+                "interestRate": 2.5,
+                "interestFrequency": "per-month",
+                "loanTenureInDays": 100,
+                "loanOfferStage": "revised",
+                "loanOfferDate": "2021-08-01T22:05:28.694Z",
+                "processingFeesPercent": 3,
+                "processingFeesFixed": 100,
+                "lender": "NP"
+            },
+            {
+                "loanProduct": "100 Day Loan",
+                "productCode": "9885",
+                "loanAmount": 100000,
+                "interestRate": 2.5,
+                "interestFrequency": "per-month",
+                "loanTenureInDays": 100,
+                "loanOfferStage": "revised",
+                "loanOfferDate": "2021-08-01T22:05:28.694Z",
+                "processingFeesPercent": 3,
+                "processingFeesFixed": 100,
+                "lender": "NP"
+            },
+            {
+                "loanProduct": "100 Day Loan",
+                "productCode": "9885",
+                "loanAmount": 125000,
+                "interestRate": 2.5,
+                "interestFrequency": "per-month",
+                "loanTenureInDays": 100,
+                "loanOfferStage": "revised",
+                "loanOfferDate": "2021-08-01T22:05:28.694Z",
+                "processingFeesPercent": 3,
+                "processingFeesFixed": 100,
+                "lender": "NP"
+            },
+            {
+                "loanProduct": "100 Day Loan",
+                "productCode": "9885",
+                "loanAmount": 150000,
+                "interestRate": 2.5,
+                "interestFrequency": "per-month",
+                "loanTenureInDays": 100,
+                "loanOfferStage": "revised",
+                "loanOfferDate": "2021-08-01T22:05:28.694Z",
+                "processingFeesPercent": 3,
+                "processingFeesFixed": 100,
+                "lender": "NP"
+            },
+            {
+                "loanProduct": "100 Day Loan",
+                "productCode": "9885",
+                "loanAmount": 200000,
+                "interestRate": 2.5,
+                "interestFrequency": "per-month",
+                "loanTenureInDays": 100,
+                "loanOfferStage": "revised",
+                "loanOfferDate": "2021-08-01T22:05:28.694Z",
+                "processingFeesPercent": 3,
+                "processingFeesFixed": 100,
+                "lender": "NP"
+            }
+        ],
+        "currentLoanOffer": {
+            "loanProduct": "100 Day Loan",
+            "productCode": "9885",
+            "loanAmount": 200000,
+            "interestRate": 2.5,
+            "interestFrequency": "per-month",
+            "loanTenureInDays": 100,
+            "loanOfferStage": "final",
+            "loanOfferDate": "2021-08-01T22:05:28.694Z",
+            "processingFeesPercent": 3,
+            "processingFeesFixed": 100,
+            "lender": "NP"
+        },
+        "stages": [
+            {
+                "previousStage": "CPV",
+                "currentStage": "PD",
+                "stageChangeDate": "2021-08-01T22:05:28.694Z",
+                "decisionEngineResponse": {},
+                "stateSuccess": "success"
+            },
+            {
+                "previousStage": "CPV",
+                "currentStage": "PD",
+                "stageChangeDate": "2021-08-01T22:05:28.694Z",
+                "decisionEngineResponse": {},
+                "stateSuccess": "success"
+            }
+        ],
+        "currentStage": {
+            "previousStage": "CPV",
+            "currentStage": "PD",
+            "stageChangeDate": "2021-08-01T22:05:28.694Z",
+            "decisionEngineResponse": {},
+            "stateSuccess": "success"
+        },
+        "statusChangeDate": "2021-08-01T22:05:28.694Z",
+        "applicationStatus": "active",
+        "creditScore": {
+            "creditScore": 700,
+            "scoreSource": "CIBIL",
+            "scoreSouceRefId": "JTMgB",
+            "createdAt": "2021-08-01T22:05:28.694Z",
+            "scoreType": "soft"
+        }
+    }
+}

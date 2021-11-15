@@ -202,7 +202,10 @@ const dealQueries = {
    * Deal detail
    */
   async dealDetail(_root, { _id }: { _id: string }, { user }: IContext) {
+    console.log("_id=================== inside",_id)
     const deal = await Deals.getDeal(_id);
+    let data = await checkItemPermByUser(user._id, deal);
+    console.log("data=================== inside",data)
 
     return checkItemPermByUser(user._id, deal);
   }

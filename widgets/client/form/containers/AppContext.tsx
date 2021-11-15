@@ -56,7 +56,7 @@ export class AppProvider extends React.Component<{}, IState> {
   init = async () => {
     const { data, browserInfo, hasPopupHandlers } = connection;
     const { integration } = data;
-
+    console.log("data", data)
     if (!browserInfo) {
       return;
     }

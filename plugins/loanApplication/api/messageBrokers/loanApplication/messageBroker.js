@@ -21,15 +21,21 @@ data should contain {
 const init = resolvers => {
   const handler = async (message, context) => {
     const { action, data } = message
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
-    console.log(action)
+    console.log("message InIt", message)
+    console.log("action=============", action)
+    console.log("data===========", data)
     if (isUndefined(actionMap[action])) {
+      console.log("isUndefined(actionMap[action])",isUndefined(actionMap[action]))
       return sendError(`ACTION_NOT_SUPPORTED ${action}`)
     }
     try {
+      console.log("actionMap===========",actionMap[action])
       const response = await actionMap[action].handler(data, resolvers, context)
+      console.log("response--------messageBroker=============", response)
       return sendSuccess(response, action)
     } catch (e) {
+      console.log("e.message", e.message)
+
       return sendError(e.message)
     }
     // send response

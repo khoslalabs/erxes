@@ -3,7 +3,7 @@ const test = (props) => {
   console.log(props)
   return(
     <div>
-      TEST
+      {/* TEST */}
     </div>
   )
 }

@@ -9,6 +9,7 @@
     "@nateradebaugh/react-datetime": "^4.0.0-rc.10",
     "@syncfusion/ej2-react-charts": "*",
     "@syncfusion/ej2-react-grids": "^19.2.57",
+    "@types/axios": "^0.14.0",
     "@types/bunyan": "^1.8.6",
     "@types/draft-js": "^0.10.24",
     "@types/enzyme": "^3.1.12",

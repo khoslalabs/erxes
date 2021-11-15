@@ -63,6 +63,10 @@ class InfoSection extends React.Component<Props> {
     }
 
     const customerForm = props => {
+      delete this.props.customer.firstName
+      // this.props.customer.test="Test Data"
+      console.log("this.props.customer",this.props.customer)
+
       return (
         <CustomerForm {...props} size="lg" customer={this.props.customer} />
       );
@@ -70,7 +74,7 @@ class InfoSection extends React.Component<Props> {
 
     return (
       <ModalTrigger
-        title="Edit basic info"
+        title="Edit basic info test"
         trigger={<Icon icon="pen-1" />}
         size="lg"
         content={customerForm}

@@ -36,6 +36,8 @@ export interface IProductData {
   amount: number;
   tickUsed: boolean;
   assignUserId?: string;
+  processingFees?:number;
+  loanTenureInMonths?:number;
 }
 
 export interface IPaymentsData {

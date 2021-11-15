@@ -21,7 +21,7 @@ export const loadDealClass = () => {
   class Deal {
     public static async getDeal(_id: string) {
       const deal = await Deals.findOne({ _id });
-
+      // console.log("deal>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", deal)
       if (!deal) {
         throw new Error('Deal not found');
       }
@@ -67,9 +67,11 @@ export const loadDealClass = () => {
      * Update Deal
      */
     public static async updateDeal(_id: string, doc: IDeal) {
+      console.log("doc+++++++++++++++++++++++",doc,_id)
       const searchText = fillSearchTextItem(doc, await Deals.getDeal(_id));
       const id1 = _id;
-      const document = doc._doc;
+      const document = doc;
+      // const document = doc._doc;
       const p = await Deals.updateOne(
         { _id: id1 },
         { $set: document, searchText }
@@ -82,6 +84,7 @@ export const loadDealClass = () => {
      * Watch deal
      */
     public static watchDeal(_id: string, isAdd: boolean, userId: string) {
+    console.log("_id==================================", _id, isAdd, userId)
       return watchItem(Deals, _id, isAdd, userId);
     }
 
