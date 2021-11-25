@@ -13,6 +13,7 @@ import React from 'react';
 import PrimaryEmail from './PrimaryEmail';
 import PrimaryPhone from './PrimaryPhone';
 import axios from 'axios';
+import { Alert} from 'modules/common/utils';
 
 type Props = {
   customer: ICustomer;
@@ -104,7 +105,7 @@ class DetailInfo extends React.PureComponent<Props> {
       <li>
         <FieldStyle>{__('Monthly Income')}:</FieldStyle>
         <SidebarCounter>
-          {this.numberWithCommas(income)}
+          {`₹${this.numberWithCommas(income)}`}
         </SidebarCounter>
       </li>
     );
@@ -114,7 +115,7 @@ class DetailInfo extends React.PureComponent<Props> {
       <li>
         <FieldStyle>{__('Monthly Rent')}:</FieldStyle>
         <SidebarCounter>
-          {this.numberWithCommas(income)}
+          {`₹${this.numberWithCommas(income)}`}
         </SidebarCounter>
       </li>
     );
@@ -152,27 +153,27 @@ class DetailInfo extends React.PureComponent<Props> {
       </li>
     );
   }
-  renderAddress() {
-    let adressObj = {
-      "address1": "Trimurti Chowk",
-      // "country": "IN",
-      "city": "Nagpur",
-      "state": "MAHARASHTRA"
-      // "zipCode": "979 797"
-    }
-    const arrayOfObj = adressObj && adressObj && Object.entries(adressObj && adressObj).map((e) => ({ [e[0]]: e[1] }));
+  renderAddress(value: string) {
+    // let adressObj = {
+    //   "address1": "Trimurti Chowk",
+    //   // "country": "IN",
+    //   "city": "Nagpur",
+    //   "state": "MAHARASHTRA"
+    //   // "zipCode": "979 797"
+    // }
+    // const arrayOfObj = adressObj && adressObj && Object.entries(adressObj && adressObj).map((e) => ({ [e[0]]: e[1] }));
 
-    let addressArr = arrayOfObj && arrayOfObj.length && arrayOfObj.map(data => {
-      let datas = ''
-      datas = datas + (`${Object.values(data)}`)
-      return datas
-    })
-    let addressObj = addressArr && addressArr.length && addressArr.join(", ")
+    // let addressArr = arrayOfObj && arrayOfObj.length && arrayOfObj.map(data => {
+    //   let datas = ''
+    //   datas = datas + (`${Object.values(data)}`)
+    //   return datas
+    // })
+    // let addressObj = addressArr && addressArr.length && addressArr.join(", ")
     return (
       <li>
         <FieldStyle>{__('Address')}:</FieldStyle>
         <SidebarCounter>
-          {addressObj}
+          {value}
         </SidebarCounter>
       </li>
     )
@@ -207,23 +208,23 @@ class DetailInfo extends React.PureComponent<Props> {
       </li>
     );
   }
-  panVerified(value: boolean) {
+  panVerified(value: string) {
     return (
       <li>
         <FieldStyle>{__('PAN Verified?')}:</FieldStyle>
         <SidebarCounter>
-          {"Yes"}
+          {value}
         </SidebarCounter>
       </li>
     );
   }
 
-  otpVerified() {
+  otpVerified(value: string) {
     return (
       <li>
         <FieldStyle>{__('OTP Verified?')}:</FieldStyle>
         <SidebarCounter>
-          {"Mobile(+91 98011 54310) has been validated"}
+          {value}
         </SidebarCounter>
       </li>
     );
@@ -239,35 +240,52 @@ class DetailInfo extends React.PureComponent<Props> {
       </li>
     );
   }
-  downloadFile() {
-    let BaseUrl = "https://dev-codeapp.novopay.in/lending/download?id=6188f9e3ce646"
+
+  downloadFile(docId: string) {
+    let docArr = docId.split("::");
+    if(docArr.length && docArr[0] !== ''){
+    let BaseUrl = `https://dev-codeapp.novopay.in/lending/download?id=${docArr[0]}`
     axios.get(BaseUrl, {
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Appwrite-Project': '616fff40c117e',
-        'X-Appwrite-Key': '5958c59e6492a29dcc621ca18530e7f5e111a924a4985841f0da8849380664f95bd75d4186c12aae48423776401a209ca8dfaa4655f955639818d999779b50fd8766b429eef2d6e8b460ed09806d3f8742f8043e572d61edd3ac6ad1a53fb2f6f1c9603a6f8025459d3be82df6936d56e03d54c481e57fce4a031f6c63bd0b08'
-      }
+      responseType: "blob"
     })
       .then(function (response) {
-      })
+        console.log("typeof", response)
+        if (response.status == 200 && response.data) {
+        Alert.success('Download Successful');
+          const url = URL.createObjectURL(response.data);
+          let a = document.createElement("a");
+          a.setAttribute("style", "display: none");
+          document.body.appendChild(a);
+          a.href = url;
+          a.download = `${docArr[1]}`;
+          a.click();
+          URL.revokeObjectURL(url);
+          a.remove();
+        }
+      })}
+      else{
+        Alert.error('Download Error');
+      }
+   
   }
-  renderCIBIL() {
+  
+  renderCIBIL(docId: string) {
     return (
       <li>
         <FieldStyle>{__('CIBIL')}:</FieldStyle>
         <SidebarCounter>
-          <a href={""} download="CIBIL_File.pdf" onClick={this.downloadFile}> Download</a>
+          <p style={{ textDecoration: "underline" }} onClick={(e) => this.downloadFile(docId)}> Download</p>
         </SidebarCounter>
       </li>
     );
   }
 
-  renderGST() {
+  renderGST(docId: string) {
     return (
       <li>
         <FieldStyle>{__('GST')}:</FieldStyle>
         <SidebarCounter>
-          <a href={""} download="GST_File.pdf" onClick={this.downloadFile}> Download</a>
+          <p style={{ textDecoration: "underline" }} onClick={(e) => this.downloadFile(docId)}> Download</p>
         </SidebarCounter>
       </li>
     );
@@ -286,22 +304,25 @@ class DetailInfo extends React.PureComponent<Props> {
 
   renderAmount(score: number) {
     let amount = '₹ 0';
-    if (score === 40 && score < 50) {
+    if (score < 40) {
+      amount = '₹ 0'
+    }
+    else if (score === 40 || score < 50) {
       amount = '₹ 50,000'
     }
-    else if (score === 50 && score < 60) {
+    else if (score === 50 || score < 60) {
       amount = '₹ 1,00,000'
     }
-    else if (score === 60 && score < 70) {
+    else if (score === 60 || score < 70) {
       amount = '₹ 1,50,000'
     }
-    else if (score === 70 && score < 80) {
+    else if (score === 70 || score < 80) {
       amount = '₹ 2,00,000'
     }
-    else if (score === 80 && score < 90) {
+    else if (score === 80 || score < 90) {
       amount = '₹ 2,50,000'
     }
-    else if (score > 89) {
+    else if (score === 90 || score > 90) {
       amount = '₹ 3,00,000'
     }
 
@@ -317,17 +338,17 @@ class DetailInfo extends React.PureComponent<Props> {
 
   renderRisk(score: number) {
     let risk = ' ';
-    if (score === 40 && score < 60) {
+    if (score < 40) {
+      risk = 'High Risk'
+    }
+    else if (score === 40 || score < 60) {
       risk = 'Moderate Risk'
     }
-    else if (score === 60 && score < 80) {
+    else if (score === 60 || score < 80) {
       risk = 'Average Risk'
     }
     else if (score > 79) {
       risk = 'Low Risk'
-    }
-    else {
-      risk = 'High Risk'
     }
     return (
       <li>
@@ -349,19 +370,19 @@ class DetailInfo extends React.PureComponent<Props> {
       </li>
     );
   }
-  
+
   render() {
     const { customer, fields } = this.props;
-
+    console.log("customer>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", customer)
     if (!fields || fields.length === 0) {
       return null;
     }
 
     return (
       <SidebarList className="no-link">
-        {this.renderScore(90)}
-        {this.renderAmount(90)}
-        {this.renderRisk(10)}
+        {this.renderScore(customer.creditScore ? customer.creditScore : 0)}
+        {this.renderAmount(customer.creditScore ? customer.creditScore : 0)}
+        {this.renderRisk(customer.creditScore ? customer.creditScore : 0)}
         {this.renderRow('code', customer.code)}
         {this.renderEmail(
           customer.emailValidationStatus,
@@ -386,20 +407,20 @@ class DetailInfo extends React.PureComponent<Props> {
         )}
         {this.renderRow('isSubscribed', customer.isSubscribed)}
         {this.renderDescription(customer.description)}
-        {this.renderIncome(10000)}
-        {this.rendermonthlyRent(8000)}
-        {this.renderuserEducation('Graduate')}
-        {this.rendermaritalStatus('Married')}
-        {this.renderuserEthnicity('Sikh')}
-        {this.rendercoborrowerName('Saurabh Kumar')}
-        {this.renderGender('Male')}
-        {this.panVerified(true)}
-        {this.otpVerified()}
-        {this.renderAddress()}
-        {this.renderBusinessvintage(4)}
+        {this.renderIncome(customer.monthlyIncome ? customer.monthlyIncome : 0)}
+        {this.rendermonthlyRent(customer.monthlyRent ? customer.monthlyRent : 0)}
+        {this.renderuserEducation(customer.qualification ? customer.qualification : '-')}
+        {this.rendermaritalStatus(customer.martialstatus ? customer.martialstatus : '-')}
+        {this.renderuserEthnicity(customer.ethnicity ? customer.ethnicity : '-')}
+        {this.rendercoborrowerName(customer.coborrowername ? customer.coborrowername : '-')}
+        {this.renderGender(customer.gender ? customer.gender : '-')}
+        {this.panVerified(customer.panverified ? customer.panverified : '-')}
+        {this.otpVerified(customer.otpverified ? customer.otpverified : '-')}
+        {this.renderAddress(customer.address ? customer.address : '-')}
+        {this.renderBusinessvintage(customer.businessvintage ? customer.businessvintage : 0)}
         {this.renderDedupe()}
-        {this.renderCIBIL()}
-        {this.renderGST()}
+        {this.renderCIBIL(customer.cibil ? customer.cibil : '')}
+        {this.renderGST(customer.gst ? customer.gst : '')}
 
       </SidebarList>
     );

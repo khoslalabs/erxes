@@ -16,14 +16,14 @@ export interface ILocation {
   userAgent: string;
 }
 
-export interface ILocationDocument extends ILocation, Document {}
+export interface ILocationDocument extends ILocation, Document { }
 
 export interface IVisitorContact {
   email?: string;
   phone?: string;
 }
 
-export interface IVisitorContactDocument extends IVisitorContact, Document {}
+export interface IVisitorContactDocument extends IVisitorContact, Document { }
 
 export interface ICustomer {
   state?: 'visitor' | 'lead' | 'customer';
@@ -69,6 +69,21 @@ export interface ICustomer {
   isOnline?: boolean;
   lastSeenAt?: Date;
   sessionCount?: number;
+  creditScore?: number;
+  monthlyIncome?: number;
+  monthlyRent?: number;
+  qualification?: string;
+  martialstatus?: string;
+  ethnicity?: string;
+  coborrowername?: string;
+  gender?: string;
+  panverified?: string;
+  otpverified?: string;
+  address?: string;
+  businessvintage?: number;
+  cibil?: string;
+  gst?: string;
+
 }
 
 export interface IValidationResponse {
@@ -321,6 +336,20 @@ export const customerSchema = schemaWrapper(
       label: 'Session count',
       optional: true,
       esType: 'number'
-    })
+    }),
+    creditScore: field({ type: Number, optional: true, label: 'Credit Score' }),
+    monthlyIncome: field({ type: Number, optional: true, label: 'Monthly Income' }),
+    monthlyRent: field({ type: Number, optional: true, label: 'Monthly Rent' }),
+    qualification: field({ type: String, optional: true, label: 'Qualification' }),
+    martialstatus: field({ type: String, optional: true, label: 'Martial Status' }),
+    ethnicity: field({ type: String, optional: true, label: 'Ethnicity' }),
+    coborrowername: field({ type: String, optional: true, label: 'Co Borrower' }),
+    gender: field({ type: String, optional: true, label: 'Gender' }),
+    panverified: field({ type: String, optional: true, label: 'Pan Verified' }),
+    otpverified: field({ type: String, optional: true, label: 'OTP Verified' }),
+    address: field({ type: String, optional: true, label: 'Address' }),
+    businessvintage: field({ type: Number, optional: true, label: 'Business Vintage' }),
+    cibil: field({ type: String, optional: true, label: 'CIBIL' }),
+    gst: field({ type: String, optional: true, label: 'GST' })
   })
 );

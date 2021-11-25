@@ -2,6 +2,8 @@ import { queries as companyQueries } from 'erxes-ui/lib/companies/graphql';
 
 const companyFields = companyQueries.companyFields;
 
+let companyParams = `${companyFields} gst udyam licensechecked cibil gstid`
+
 const listParamsDef = companyQueries.listParamsDef;
 
 const listParamsValue = companyQueries.listParamsValue;
@@ -29,7 +31,7 @@ export const companyCounts = `
 export const companyDetail = `
   query companyDetail($_id: String!) {
     companyDetail(_id: $_id) {
-      ${companyFields}
+      ${companyParams}
       customers {
         _id
         firstName
