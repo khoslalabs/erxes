@@ -3,7 +3,8 @@ import { queries as customerQueries } from 'erxes-ui/lib/customers/graphql';
 const basicFields = customerQueries.basicFields;
 
 const customerFields = customerQueries.customerFields;
-
+let customerParams = `${customerFields} creditScore monthlyIncome monthlyRent qualification martialstatus ethnicity coborrowername gender 
+panverified otpverified address businessvintage cibil gst`
 const listParamsDef = customerQueries.listParamsDef;
 
 const listParamsValue = customerQueries.listParamsValue;
@@ -37,7 +38,7 @@ const customerCounts = `
 const customerDetail = `
   query customerDetail($_id: String!) {
     customerDetail(_id: $_id) {
-      ${customerFields}
+      ${customerParams}
       urlVisits
       integration {
         kind

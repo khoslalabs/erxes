@@ -38,6 +38,11 @@ export const types = `
     getTags: [Tag]
     code: String
     location: String
+    gst: String
+    udyam: String
+    licensechecked: String
+    cibil: String
+    gstid: String
   }
 
   type CompaniesListResponse {

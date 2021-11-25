@@ -32,7 +32,6 @@ class Actions extends React.Component<Props> {
     const { onUpdate, saveItem, onChangePriority } = this.props;
     onChangePriority(value)
     if (saveItem) {
-      debugger
       saveItem({ priority: value }, updatedItem => {
         onUpdate(updatedItem);
       });

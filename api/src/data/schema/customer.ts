@@ -58,6 +58,20 @@ export const types = `
     conversations: [Conversation]
     getTags: [Tag]
     owner: User
+    creditScore: Float
+    monthlyIncome: Float
+    monthlyRent: Float
+    qualification: String
+    martialstatus: String
+    ethnicity: String
+    coborrowername: String
+    gender: String
+    panverified: String
+    otpverified: String
+    address: String
+    businessvintage: Float
+    cibil: String
+    gst: String
   }
 
   type CustomersListResponse {

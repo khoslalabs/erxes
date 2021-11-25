@@ -35,6 +35,11 @@ export interface ICompany {
   website?: string;
   code?: string;
   location?: string;
+  gst?: string;
+  udyam?: string;
+  licensechecked?: string;
+  cibil?:string;
+  gstid?:string;
 }
 
 export interface ICompanyDocument extends ICompany, Document {
@@ -182,6 +187,12 @@ export const companySchema = schemaWrapper(
     }),
     searchText: field({ type: String, optional: true, index: true }),
     code: field({ type: String, label: 'Code', optional: true }),
-    location: field({ type: String, optional: true, label: 'Location' })
+    location: field({ type: String, optional: true, label: 'Location' }),
+    gst: field({ type: String, optional: true, label: 'GST' }),
+    udyam: field({ type: String, optional: true, label: 'UDYAM' }),
+    licensechecked: field({ type: String, optional: true, label: 'License checked' }),
+    cibil:field({ type: String, optional: true, label: 'Cibil' }),
+    gstid:field({ type: String, optional: true, label: 'GSTId' })
   })
 );
+
