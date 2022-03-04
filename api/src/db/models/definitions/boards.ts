@@ -48,7 +48,7 @@ export interface IItemCommonFields {
     startDate?: string;
   };
   customFieldsData?: ICustomField[];
-  type?: string;
+  score?: number;
 }
 
 export interface IItemCommonFieldsDocument extends IItemCommonFields, Document {
@@ -75,11 +75,11 @@ export interface IBoardDocument extends IBoard, Document {
 export interface IPipeline extends ICommonFields {
   name?: string;
   boardId: string;
+  status?: string;
   visibility?: string;
   memberIds?: string[];
   bgColor?: string;
   watchedUserIds?: string[];
-
   startDate?: Date;
   endDate?: Date;
   metric?: string;
@@ -159,7 +159,6 @@ export const commonItemFieldsSchema = {
   createdAt: field({ type: Date, label: 'Created at', esType: 'date' }),
   order: field({ type: Number }),
   name: field({ type: String, label: 'Name' }),
-  type: field({ type: String, label: 'type', esType: 'type' }),
   closeDate: field({ type: Date, label: 'Close date', esType: 'date' }),
   stageChangedDate: field({
     type: Date,
@@ -210,6 +209,12 @@ export const commonItemFieldsSchema = {
     type: [customFieldSchema],
     optional: true,
     label: 'Custom fields data'
+  }),
+  score: field({
+    type: Number,
+    optional: true,
+    label: 'Score',
+    esType: 'number'
   })
 };
 
@@ -225,6 +230,12 @@ export const pipelineSchema = new Schema({
   _id: field({ pkey: true }),
   name: field({ type: String, label: 'Name' }),
   boardId: field({ type: String, label: 'Board' }),
+  status: field({
+    type: String,
+    enum: BOARD_STATUSES.ALL,
+    default: BOARD_STATUSES.ACTIVE,
+    label: 'Status'
+  }),
   visibility: field({
     type: String,
     enum: PIPELINE_VISIBLITIES.ALL,

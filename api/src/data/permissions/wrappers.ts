@@ -80,6 +80,8 @@ export const checkPermission = async (
   cls[methodName] = async (root, args, context: { user: IUserDocument }) => {
     const { user } = context;
 
+    checkLogin(user);
+
     const allowed = await can(actionName, user);
 
     if (!allowed) {

@@ -1,6 +1,5 @@
 import * as dotenv from 'dotenv';
-const faker = require('faker/locale/en_IND');
-
+import * as faker from 'faker';
 import * as fs from 'fs';
 import { disconnect } from 'mongoose';
 import * as shelljs from 'shelljs';
@@ -563,14 +562,17 @@ const main = async () => {
     content: `<p>${faker.lorem.sentences()}</p>\n`
   });
 
-  const segment = await Segments.createSegment({
-    name: 'Happy customers',
-    description: faker.lorem.sentence(),
-    contentType: 'customer',
-    color: faker.internet.color(),
-    subOf: '',
-    conditions: []
-  });
+  const segment = await Segments.createSegment(
+    {
+      name: 'Happy customers',
+      description: faker.lorem.sentence(),
+      contentType: 'customer',
+      color: faker.internet.color(),
+      subOf: '',
+      conditions: []
+    },
+    []
+  );
 
   const docAutoMessage = {
     kind: MESSAGE_KINDS.VISITOR_AUTO,
@@ -659,7 +661,7 @@ const main = async () => {
 
   await disconnect();
 
-  console.log('admin email: admin@novoloans.in');
+  console.log('admin email: admin@erxes.io');
   console.log('admin password: ', newPwd);
 
   process.exit();

@@ -56,7 +56,6 @@ export type ActivityLogQueryResponse = {
 };
 
 export interface IDeal extends IItem {
-  loanApplication?: any;
   products?: any;
   paymentsData?: IPaymentsData;
 }

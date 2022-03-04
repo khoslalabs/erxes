@@ -4,6 +4,7 @@ import {
   ActivityDate,
   Date,
   DeleteAction,
+  Description,
   Detail,
   FlexBody,
   FlexCenterContent,
@@ -211,7 +212,6 @@ class Task extends React.Component<Props, State> {
 
   renderContent() {
     const { task } = this.props;
-    const desc = task.description;
 
     const assignedUserIds = (task.assignedUsers || []).map(user => user._id);
 
@@ -240,14 +240,14 @@ class Task extends React.Component<Props, State> {
           </FlexBody>
         </FlexContent>
 
-        <div dangerouslySetInnerHTML={{ __html: desc }}></div>
+        {task.description && <Description>{task.description}</Description>}
       </>
     );
   }
 
   render() {
     const { isComplete, showDetail, editing } = this.state;
-    const { /*createdUser*/ createdAt, boardId, _id } = this.props.task;
+    const { createdUser, createdAt, boardId, _id } = this.props.task;
 
     const onComplete = () => {
       this.setState({ isComplete: !this.state.isComplete }, () => {
@@ -260,9 +260,11 @@ class Task extends React.Component<Props, State> {
         <FlexCenterContent>
           <FlexBody>
             <strong>
-              {/*{createdUser && createdUser.details ? createdUser.details.fullName || createdUser.email : 'Undefined'}*/}
-            </strong>
-            <strong>Task Created</strong>
+              {createdUser && createdUser.details
+                ? createdUser.details.fullName || createdUser.email
+                : 'Undefined'}
+            </strong>{' '}
+            created a task
           </FlexBody>
           <Link to={`/task/board?_id=${boardId}&itemId=${_id}`} target="_blank">
             <JumpTo>

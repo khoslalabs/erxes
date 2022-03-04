@@ -216,6 +216,7 @@ export const ACTIVITY_ACTIONS = {
   MOVED: 'moved',
   CONVERT: 'convert',
   ASSIGNEE: 'assignee',
+  TAGGED: 'tagged',
 
   ALL: [
     'create',
@@ -225,7 +226,8 @@ export const ACTIVITY_ACTIONS = {
     'send',
     'moved',
     'convert',
-    'assignee'
+    'assignee',
+    'tagged'
   ]
 };
 
@@ -241,14 +243,27 @@ export const ACTIVITY_PERFORMER_TYPES = {
 export const PRODUCT_TYPES = {
   PRODUCT: 'product',
   SERVICE: 'service',
-  LOAN: 'loan',
-  ALL: ['product', 'service', 'loan']
+  ALL: ['product', 'service']
 };
 
 export const PRODUCT_STATUSES = {
   ACTIVE: 'active',
   DELETED: 'deleted',
   ALL: ['active', 'deleted']
+};
+
+export const PRODUCT_CATEGORY_STATUSES = {
+  ACTIVE: 'active',
+  DISABLED: 'disabled',
+  ARCHIVED: 'archived',
+  ALL: ['active', 'disabled', 'archived']
+};
+
+export const PRODUCT_SUPPLY = {
+  UNIQUE: 'unique',
+  LIMITED: 'limited',
+  UNLIMITED: 'unlimited',
+  ALL: ['unique', 'limited', 'unlimited']
 };
 
 export const PIPELINE_VISIBLITIES = {
@@ -276,6 +291,7 @@ export const FIELDS_GROUPS_CONTENT_TYPES = {
   VISITOR: 'visitor',
   LEAD: 'lead',
   FORM: 'form',
+  USER: 'user',
   ALL: [
     'customer',
     'company',
@@ -287,7 +303,8 @@ export const FIELDS_GROUPS_CONTENT_TYPES = {
     'deal',
     'visitor',
     'lead',
-    'form'
+    'form',
+    'user'
   ]
 };
 
@@ -474,20 +491,7 @@ export const BOARD_TYPES = {
   GROWTH_HACK: 'growthHack',
   ALL: ['deal', 'ticket', 'task', 'growthHack']
 };
-export const INTEREST_FREQUENCIES = {
-  DAILY: 'per-day',
-  WEELKY: 'per-week',
-  MONTHLY: 'per-month',
-  QUARTERLY: 'per-quarter',
-  ANNUAL: 'per-year'
-};
-export const INTEREST_FREQUENCY = [
-  { value: INTEREST_FREQUENCIES.ANNUAL, label: 'Per Year' },
-  { value: INTEREST_FREQUENCIES.DAILY, label: 'Per Day' },
-  { value: INTEREST_FREQUENCIES.MONTHLY, label: 'Per Month' },
-  { value: INTEREST_FREQUENCIES.QUARTERLY, label: 'Per Quarter' },
-  { value: INTEREST_FREQUENCIES.WEELKY, label: 'Per Week' }
-];
+
 export const MESSAGE_TYPES = {
   VIDEO_CALL: 'videoCall',
   VIDEO_CALL_REQUEST: 'videoCallRequest',
@@ -557,7 +561,8 @@ export const NOTIFICATION_TYPES = {
     'taskDueDate',
     'taskDelete',
     'customerMention',
-    'companyMention'
+    'companyMention',
+    'plugin'
   ]
 };
 
@@ -608,6 +613,18 @@ export const COMPANY_SELECT_OPTIONS = {
     { label: 'Yes', value: 'Yes' },
     { label: 'No', value: 'No' },
     { label: 'Unknown', value: '' }
+  ]
+};
+
+export const CONVERSATION_SELECT_OPTIONS = {
+  OPERATOR_STATUS: [
+    { label: 'Operator', value: 'operator' },
+    { label: 'Bot', value: 'bot' }
+  ],
+  STATUS: [
+    { label: 'New', value: 'new' },
+    { label: 'Open', value: 'open' },
+    { label: 'Resolved', value: 'closed' }
   ]
 };
 
@@ -760,6 +777,22 @@ export const WEBHOOK_ACTIONS = [
   { label: 'Company created', action: 'create', type: 'company' },
   { label: 'Company updated', action: 'update', type: 'company' },
   { label: 'Company deleted', action: 'delete', type: 'company' },
+  { label: 'Deal created', action: 'create', type: 'deal' },
+  { label: 'Deal updated', action: 'update', type: 'deal' },
+  { label: 'Deal deleted', action: 'delete', type: 'deal' },
+  { label: 'Deal moved', action: 'createBoardItemMovementLog', type: 'deal' },
+  { label: 'Task created', action: 'create', type: 'task' },
+  { label: 'Task updated', action: 'update', type: 'task' },
+  { label: 'Task deleted', action: 'delete', type: 'task' },
+  { label: 'Task moved', action: 'createBoardItemMovementLog', type: 'task' },
+  { label: 'Ticket created', action: 'create', type: 'ticket' },
+  { label: 'Ticket updated', action: 'update', type: 'ticket' },
+  { label: 'Ticket deleted', action: 'delete', type: 'ticket' },
+  {
+    label: 'Ticket moved',
+    action: 'createBoardItemMovementLog',
+    type: 'ticket'
+  },
   {
     label: 'Knowledge Base created',
     action: 'create',
@@ -803,6 +836,9 @@ export const WEBHOOK_TYPES = {
   FORM_SUBMITTED: 'popupSubmitted',
   KNOWLEDGEBASE: 'knowledgeBaseArticle',
   CAMPAIGN: 'engageMessages',
+  DEAL: 'deal',
+  TASK: 'task',
+  TICKET: 'ticket',
   ALL: [
     'customer',
     'company',
@@ -811,7 +847,10 @@ export const WEBHOOK_TYPES = {
     'customerMessages',
     'popupSubmitted',
     'knowledgeBaseArticle',
-    'engageMessages'
+    'engageMessages',
+    'deal',
+    'task',
+    'ticket'
   ]
 };
 
@@ -819,4 +858,10 @@ export const WEBHOOK_STATUS = {
   AVAILABLE: 'available',
   UNAVAILABLE: 'unavailable',
   ALL: ['available', 'unavailable']
+};
+
+export const REACTION_CHOICES = {
+  LIKE: 'like',
+  DISLIKE: 'disLike',
+  ALL: ['like', 'dislike']
 };

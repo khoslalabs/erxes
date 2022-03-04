@@ -54,7 +54,6 @@ export const dealFields = `
   productsData
   paymentsData
   amount
-  loanApplication
 `;
 
 const dealsTotalAmounts = `

@@ -1,7 +1,6 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
-import * as dayjs from 'dayjs';
-import 'dayjs/locale/en-in';
+
 import initCallPro from './callpro/controller';
 import initChatfuel from './chatfuel/controller';
 import { connect, mongoStatus } from './connection';
@@ -31,13 +30,7 @@ import initTwitter from './twitter/controller';
 import userMiddleware from './userMiddleware';
 import initDaily from './videoCall/controller';
 import initWhatsapp from './whatsapp/controller';
-import initLos from './loanApplication/controller';
-import initLosMessageBroker from './loanApplication/messageBroker';
-import initLms from './novopayLms/controller';
-import intLmsMessageBroker from './novopayLms/messageBroker';
-// import initLosApp from './novopayLosApp/controller';
-// import initLosAppMessageBroker from './novopayLosApp/messageBroker'
-dayjs.locale('en-in');
+
 const app = express();
 
 const rawBodySaver = (req, _res, buf, encoding) => {
@@ -150,7 +143,16 @@ app.get('/integrations', async (req, res) => {
 app.get('/integrationDetail', async (req, res) => {
   const { erxesApiId } = req.query;
 
-  const integration = await Integrations.findOne({ erxesApiId });
+  // do not expose fields below
+  const integration = await Integrations.findOne(
+    { erxesApiId },
+    {
+      nylasToken: 0,
+      nylasAccountId: 0,
+      nylasBillingState: 0,
+      googleAccessToken: 0
+    }
+  );
 
   debugResponse(debugIntegrations, req, JSON.stringify(integration));
 
@@ -184,14 +186,6 @@ initSmooch(app);
 // init telnyx
 initTelnyx(app);
 
-// init los
-initLos(app);
-
-// init lms
-initLms(app);
-
-// initLosApp(app);
-
 // Error handling middleware
 app.use((error, _req, res, _next) => {
   console.error(error.stack);
@@ -199,6 +193,7 @@ app.use((error, _req, res, _next) => {
 });
 
 const { PORT } = process.env;
+
 app.listen(PORT, () => {
   connect().then(async () => {
     await initBroker(app);
@@ -207,10 +202,6 @@ app.listen(PORT, () => {
 
     // Initialize startup
     init();
-    // Initialize any message brokers
-    initLosMessageBroker();
-    intLmsMessageBroker();
-    // initLosAppMessageBroker();
   });
 
   debugInit(`Integrations server is running on port ${PORT}`);

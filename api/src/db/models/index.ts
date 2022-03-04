@@ -3,6 +3,7 @@ import Brands from './Brands';
 import { CalendarBoards, CalendarGroups, Calendars } from './Calendars';
 import Channels from './Channels';
 import { ChecklistItems, Checklists } from './Checklists';
+import ClientPortals from './ClientPortal';
 import Companies from './Companies';
 import Configs from './Configs';
 import Conformities from './Conformities';
@@ -41,8 +42,7 @@ import Tasks from './Tasks';
 import Tickets from './Tickets';
 import Users from './Users';
 import Webhooks from './Webhook';
-// Dummy
-let LoanApplications;
+
 export {
   EmailDeliveries,
   Users,
@@ -80,6 +80,7 @@ export {
   Products,
   ProductCategories,
   Configs,
+  ClientPortals,
   FieldsGroups,
   ImportHistory,
   MessengerApps,
@@ -97,6 +98,5 @@ export {
   Webhooks,
   Calendars,
   CalendarGroups,
-  CalendarBoards,
-  LoanApplications
+  CalendarBoards
 };

@@ -94,6 +94,7 @@ export const can = async (
   }
 
   const actionMap: IActionMap = await getUserActionsMap(user);
+
   return actionMap[action] === true;
 };
 

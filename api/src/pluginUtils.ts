@@ -1,6 +1,7 @@
 import { withFilter } from 'apollo-server-express';
 import * as fs from 'fs';
 import * as mongoose from 'mongoose';
+import * as schedule from 'node-schedule';
 import * as path from 'path';
 import { ILogDataParams } from './data/logUtils';
 import { can, registerModule } from './data/permissions/utils';
@@ -9,11 +10,13 @@ import { IListArgs } from './data/resolvers/queries/activityLogs';
 import * as allModels from './db/models';
 import { IActivityLogDocument } from './db/models/definitions/activityLogs';
 import { IUserDocument } from './db/models/definitions/users';
+import { field } from './db/models/definitions/utils';
 import { debugError } from './debuggers';
 import memoryStorage from './inmemoryStorage';
 import messageBroker from './messageBroker';
 import { graphqlPubsub } from './pubsub';
-import { putCreateLog, putDeleteLog, putUpdateLog } from './data/logUtils';
+
+export { allModels };
 
 interface ISubAfterMutations {
   [action: string]: {
@@ -37,6 +40,7 @@ interface IActivityContents {
 const callAfterMutations: IAfterMutations[] | {} = {};
 const callActivityContents: IActivityContents | {} = {};
 const pluginsConsumers = {};
+const cronJobs: any[] = [];
 
 const tryRequire = requirPath => {
   try {
@@ -53,11 +57,12 @@ export const execInEveryPlugin = callback => {
     __dirname,
     process.env.NODE_ENV === 'production' ? './plugins' : '../../plugins'
   );
+
   if (fs.existsSync(pluginsPath)) {
     fs.readdir(pluginsPath, (_error, plugins) => {
       const pluginsCount = plugins.length;
+
       plugins.forEach((plugin, index) => {
-        let modelExtensions = [];
         let routes = [];
         let msgBrokers = [];
         let models = [];
@@ -68,6 +73,8 @@ export const execInEveryPlugin = callback => {
         let afterMutations = [];
         let activityContents = [];
         let constants = {};
+        let crons = [];
+
         const graphqlSchema = {
           types: '',
           queries: '',
@@ -75,7 +82,7 @@ export const execInEveryPlugin = callback => {
           subscriptions: ''
         };
 
-        const ext = process.env.NODE_ENV === 'production' ? 'js' : 'js';
+        const ext = process.env.NODE_ENV === 'production' ? 'js' : 'ts';
 
         const permissionsPath = `${pluginsPath}/${plugin}/api/permissions.${ext}`;
         const routesPath = `${pluginsPath}/${plugin}/api/routes.${ext}`;
@@ -88,8 +95,8 @@ export const execInEveryPlugin = callback => {
         const afterMutationsPath = `${pluginsPath}/${plugin}/api/graphql/afterMutations.${ext}`;
         const activityContentsPath = `${pluginsPath}/${plugin}/api/graphql/activityContents.${ext}`;
         const modelsPath = `${pluginsPath}/${plugin}/api/models.${ext}`;
-        const modelExtensionsPath = `${pluginsPath}/${plugin}/api/modelExtensions.${ext}`;
         const constantsPath = `${pluginsPath}/${plugin}/api/constants.${ext}`;
+        const cronsPath = `${pluginsPath}/${plugin}/api/cronJobs.${ext}`;
 
         if (fs.existsSync(permissionsPath)) {
           registerModule({
@@ -112,9 +119,7 @@ export const execInEveryPlugin = callback => {
         if (fs.existsSync(modelsPath)) {
           models = tryRequire(modelsPath).default;
         }
-        if (fs.existsSync(modelExtensionsPath)) {
-          modelExtensions = tryRequire(modelExtensionsPath).default;
-        }
+
         if (fs.existsSync(constantsPath)) {
           constants = tryRequire(constantsPath).default;
         }
@@ -165,9 +170,12 @@ export const execInEveryPlugin = callback => {
           }
         }
 
+        if (fs.existsSync(cronsPath)) {
+          crons = tryRequire(cronsPath).default;
+        }
+
         callback({
           isLastIteration: pluginsCount === index + 1,
-          modelExtensions,
           routes,
           msgBrokers,
           graphqlSchema,
@@ -178,7 +186,8 @@ export const execInEveryPlugin = callback => {
           afterMutations,
           activityContents,
           models,
-          constants
+          constants,
+          crons
         });
       });
     });
@@ -186,7 +195,6 @@ export const execInEveryPlugin = callback => {
     callback({
       isLastIteration: true,
       constants: {},
-      modelExtensions: [],
       graphqlSchema: {},
       graphqlResolvers: [],
       graphqlQueries: [],
@@ -196,7 +204,8 @@ export const execInEveryPlugin = callback => {
       activityContents: {},
       routes: [],
       models: [],
-      msgBrokers: []
+      msgBrokers: [],
+      crons: []
     });
   }
 };
@@ -222,7 +231,6 @@ export const extendViaPlugins = (
     execInEveryPlugin(
       async ({
         isLastIteration,
-        modelExtensions,
         graphqlSchema,
         graphqlResolvers,
         graphqlQueries,
@@ -232,35 +240,34 @@ export const extendViaPlugins = (
         activityContents,
         routes,
         models,
-        msgBrokers
+        msgBrokers,
+        crons
       }) => {
         routes.forEach(route => {
           app[route.method.toLowerCase()](route.path, (req, res) => {
             return res.send(route.handler({ req, models: allModels }));
           });
         });
+
         if (models && models.length) {
           models.forEach(model => {
-            // for (const perField of Object.keys(model.schema)) {
-            //   console.log(`${model.name} - ${perField}`)
-            //   console.log(model.schema[perField])
-            //   model.schema[perField] = field(model.schema[perField]);
-            // }
-            if (model.klass) {
-              model.schema.loadClass(model.klass);
+            for (const perField of Object.keys(model.schema)) {
+              model.schema[perField] = field(model.schema[perField]);
             }
+
+            if (model.klass) {
+              model.schema = new mongoose.Schema(model.schema).loadClass(
+                model.klass
+              );
+            }
+
             allModels[model.name] = mongoose.model(
               model.name.replace(/([a-z])([A-Z])/g, '$1_$2').toLowerCase(),
               model.schema
             );
           });
         }
-        if (modelExtensions && modelExtensions.length > 0) {
-          modelExtensions.forEach(extension => {
-            const { extensionHandler, model } = extension;
-            extensionHandler(allModels[model].schema);
-          });
-        }
+
         if (graphqlSchema.types) {
           types = `
             ${types}
@@ -297,8 +304,7 @@ export const extendViaPlugins = (
             graphqlPubsub,
             checkLogin,
             checkPermission,
-            messageBroker,
-            logUtils: { putCreateLog, putDeleteLog, putUpdateLog }
+            messageBroker
           };
         };
 
@@ -330,6 +336,7 @@ export const extendViaPlugins = (
             };
           }
         }
+
         if (graphqlResolvers) {
           for (const resolver of graphqlResolvers) {
             if (!Object.keys(resolvers).includes(resolver.type)) {
@@ -350,7 +357,7 @@ export const extendViaPlugins = (
             if (!Object.keys(pluginsConsumers).includes(mbroker.channel)) {
               pluginsConsumers[mbroker.channel] = {};
             }
-            pluginsConsumers[mbroker.channel] = mbroker.init(resolvers);
+            pluginsConsumers[mbroker.channel] = mbroker;
           });
         }
 
@@ -390,6 +397,12 @@ export const extendViaPlugins = (
           });
         }
 
+        if (crons && crons.length) {
+          crons.forEach(async cron => {
+            cronJobs.push(cron);
+          });
+        }
+
         if (isLastIteration) {
           return resolve({ types, queries, mutations, subscriptions });
         }
@@ -402,18 +415,14 @@ export const pluginsConsume = client => {
   const context = {
     models: allModels,
     memoryStorage,
-    graphqlPubsub,
-    logUtils: { putCreateLog, putDeleteLog, putUpdateLog }
+    graphqlPubsub
   };
 
   for (const channel of Object.keys(pluginsConsumers)) {
     const mbroker = pluginsConsumers[channel];
 
     if (mbroker.method === 'RPCQueue') {
-      consumeRPCQueue(
-        channel,
-        async msg => await mbroker.handler(msg, context)
-      );
+      consumeRPCQueue(channel, async msg => mbroker.handler(msg, context));
     } else {
       consumeQueue(channel, async msg => await mbroker.handler(msg, context));
     }
@@ -496,5 +505,18 @@ export const collectPluginContent = async (
     return collectItemsDefault(items);
   } catch (e) {
     throw new Error(e.message);
+  }
+};
+
+export const pluginsCronJobRunner = async () => {
+  const context = {
+    models: allModels,
+    memoryStorage
+  };
+
+  for (const cronJob of cronJobs) {
+    schedule.scheduleJob(`${cronJob.schedule}`, () => {
+      cronJob.handler(context);
+    });
   }
 };

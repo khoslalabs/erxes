@@ -1,5 +1,5 @@
 import * as _ from 'underscore';
-import { Deals, Conformities } from '../../../db/models';
+import { Deals } from '../../../db/models';
 import { IItemDragCommonFields } from '../../../db/models/definitions/boards';
 import { IDeal } from '../../../db/models/definitions/deals';
 import { checkPermission } from '../../permissions/wrappers';
@@ -27,14 +27,7 @@ const dealMutations = {
     doc: IDeal & { proccessId: string; aboveItemId: string },
     { user, docModifier }: IContext
   ) {
-    const item = await itemsAdd(
-      doc,
-      'deal',
-      user,
-      docModifier,
-      Deals.createDeal
-    );
-    return item;
+    return itemsAdd(doc, 'deal', Deals.createDeal, user, docModifier);
   },
 
   /**
@@ -113,12 +106,7 @@ const dealMutations = {
    * Remove deal
    */
   async dealsRemove(_root, { _id }: { _id: string }, { user }: IContext) {
-    const removed = await itemsRemove(_id, 'deal', user);
-    await Conformities.removeConformity({
-      mainType: 'deal',
-      mainTypeId: _id
-    });
-    return removed;
+    return itemsRemove(_id, 'deal', user);
   },
 
   /**

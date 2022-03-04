@@ -7,7 +7,6 @@ import {
 } from './boardUtils';
 import { ACTIVITY_CONTENT_TYPES } from './definitions/constants';
 import { dealSchema, IDeal, IDealDocument } from './definitions/deals';
-import * as mongoose from 'mongoose';
 
 export interface IDealModel extends Model<IDealDocument> {
   getDeal(_id: string): Promise<IDealDocument>;
@@ -68,13 +67,9 @@ export const loadDealClass = () => {
      */
     public static async updateDeal(_id: string, doc: IDeal) {
       const searchText = fillSearchTextItem(doc, await Deals.getDeal(_id));
-      const id1 = _id;
-      const document = doc._doc;
-      const p = await Deals.updateOne(
-        { _id: id1 },
-        { $set: document, searchText }
-      );
-      console.log(p);
+
+      await Deals.updateOne({ _id }, { $set: doc, searchText });
+
       return Deals.findOne({ _id });
     }
 
